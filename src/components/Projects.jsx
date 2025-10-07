@@ -8,7 +8,7 @@ const Projects = () => {
   const projects = [
     {
       title: 'CSS Website',
-      description: 'A web-based platform for students that allows them to search for any materials and knows about the upcoming events and happenings  in the branch.',
+      description: '( ONGOING PROJECT ) A web-based platform for students that allows them to search for any materials and knows about the upcoming events and happenings  in the branch.',
       imageUrl: '/project-douvt-hub.jpg', // Place your project screenshot in the 'public' folder
       tags: ['#html', '#css', '#javascript'],
       githubUrl: 'https://github.com/your-username/douvt-hub',
