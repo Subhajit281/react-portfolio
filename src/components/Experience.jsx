@@ -22,7 +22,7 @@ const Experience = () => {
       imageUrl: 'https://w7.pngwing.com/pngs/551/946/png-transparent-computer-icons-web-development-software-developer-software-development-icon-design-others-angle-text-logo.png', // Example path
     },
     {
-      date: 'July 2024 - Aug 2024',
+      date: 'August 2025 - Present',
       title: 'Computer Science Society',
       company: 'Dev wing',
       description: 'I am currently expanding my knowledge in server-side development, complemented by a practical understanding of modern frontend technologies to deliver seamless full-stack applications',
