@@ -5,13 +5,15 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Subhajit Sarkar - Portfolio</title>
+    
     <!-- 
-      ✨ FIX: This style tag sets a dark background immediately, 
-      preventing the orange flash while your React app loads.
+      ✨ THIS IS THE NEW, MORE POWERFUL FIX ✨
+      This style tag targets html, body, AND the #root div,
+      and uses !important to guarantee a black background on initial load.
     -->
     <style>
-      body {
-        background-color: #000000;
+      html, body, #root {
+        background-color: #000000 !important;
       }
     </style>
   </head>
@@ -20,3 +22,4 @@
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
+
