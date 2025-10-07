@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 const Education = () => {
   const educationHistory = [
     {
-      duration: '2021 - 2025',
+      duration: '2024 - 2028',
       degree: 'Bachelor of Technology - B.Tech',
       field: 'Computer Science and Engineering',
       school: 'National Institute of Technology Silchar',
@@ -12,7 +12,7 @@ const Education = () => {
       imageUrl: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrnjsjV_R7jIg0IyXmq0wJRUvt_t1thtTYFA&s',
     },
     {
-      duration: '2019 - 2021',
+      duration: '2022 - 2024',
       degree: 'Higher Secondary Education (12th Grade)',
       field: 'Science Stream',
       school: 'Jawahar Navodaya Vidyalaya, Bengaluru Urban',
@@ -20,7 +20,7 @@ const Education = () => {
       imageUrl: 'https://pbs.twimg.com/profile_images/1713141670886133760/l0-yb5OB_400x400.png',
     },
     {
-      duration: '2019 - 2021',
+      duration: '2017 - 2022',
       degree: 'Higher Secondary Education (10th Grade)',
       field: 'Science Stream',
       school: 'Jawahar Navodaya Vidyalaya, Sonitpur',
