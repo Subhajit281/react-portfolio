@@ -33,25 +33,21 @@ const Experience = () => {
   ];
 
   return (
-    // I've made the section background transparent to be consistent with your site's global background
     <section id="experience" className="bg-transparent text-white py-20 md:py-32">
-      {/* This container correctly aligns your content with the navbar */}
       <div className="container max-w-6xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold mb-10 inline-block bg-gray-900/40 px-8 py-1 rounded-lg text-purple-100 [text-shadow:10px_7px_3px_rgba(0,0,0,0.9)]">Experience</h2>
         <p className="text-lg text-white mb-16 leading-relaxed [text-shadow:6px_4px_2px_rgba(0,0,0,0.9)]">
           My work experience on different projects.
         </p>
 
-        {/* Timeline Container */}
         <div className="relative">
-          {/* The Vertical Line - This correctly hides on mobile */}
-          <div className="absolute left-1/2 top-0 h-full w-1 bg-gray-100 -translate-x-1/2 hidden md:block"></div>
+          {/* The Vertical Line - Now correctly hidden on mobile */}
+          <div className="absolute left-1/2 top-0 h-full w-1 bg-gray-700 -translate-x-1/2 hidden md:block"></div>
 
-          {/* Map over the experiences array */}
           {experiences.map((exp, index) => (
-            // This wrapper correctly stacks the node and card on mobile
+            // This wrapper now correctly stacks the node and card on mobile
             <div key={index} className="relative mb-12 flex flex-col items-center md:items-stretch">
-              {/* Timeline Node - This logic is responsive and works perfectly */}
+              {/* Timeline Node - Now responsive */}
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
@@ -66,13 +62,12 @@ const Experience = () => {
                 />
               </motion.div>
 
-              {/* This wrapper uses YOUR logic to position the card, which is the correct way */}
+              {/* This wrapper correctly handles the alignment on desktop and centers on mobile */}
               <div
-                className={`w-full flex items-center ${
+                className={`w-full flex justify-center ${
                   index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
                 }`}
               >
-                {/* Experience Card - Your design is preserved, only alignment classes are used */}
                 <motion.div
                   initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -84,7 +79,7 @@ const Experience = () => {
                   <p className="text-sm text-cyan-400 mb-1">{exp.date}</p>
                   <h3 className="text-xl font-bold mb-2">{exp.title}</h3>
                   <p className="text-md font-semibold text-gray-300 mb-4">{exp.company}</p>
-                  <p className="text-gray-300 mb-4 text-center">{exp.description}</p>
+                  <p className="text-gray-300 mb-4 text-left">{exp.description}</p>
                   <div className="text-left">
                     <h4 className="font-semibold mb-2">Skills:</h4>
                     <ul className="list-disc list-inside text-gray-300">

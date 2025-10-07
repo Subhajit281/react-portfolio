@@ -74,17 +74,17 @@ const Footer = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        {/* Responsive grid: 1 col on mobile, 2 on tablet, 4 on desktop */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center sm:text-left items-start">
+        {/* ✨ THIS IS THE GRID I'VE UPDATED FOR PROPER RESPONSIVENESS ✨ */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left items-start">
           
           {/* Column 1: Brand & Name */}
-          <div className="md:col-span-1">
+          <div className="lg:col-span-1">
             <h3 className="text-2xl font-bold text-cyan-400 ">Subhajit Sarkar</h3>
             <p className="mt-2 text-gray-200">A passionate developer building the future, one line of code at a time.</p>
           </div>
 
           {/* Column 2: Quick Links */}
-          <div className="md:col-span-1">
+          <div className="lg:col-span-1">
             <h4 className="text-xl font-bold mb-4">Quick Links</h4>
             <ul>
               {quickLinks.map((link) => (
@@ -96,9 +96,9 @@ const Footer = () => {
           </div>
 
           {/* Column 3: Social Media */}
-          <div className="md:col-span-1">
+          <div className="lg:col-span-1">
             <h4 className="text-xl font-bold mb-4">Connect With Me</h4>
-            <div className="flex justify-center sm:justify-start space-x-6">
+            <div className="flex justify-center md:justify-start space-x-6">
               {socialLinks.map((link) => (
                 <motion.a
                   key={link.name}
@@ -115,8 +115,8 @@ const Footer = () => {
             </div>
           </div>
           
-          {/* Column 4: Lottie Animation */}
-          <div className="hidden sm:flex justify-center items-center md:col-span-1">
+          {/* Column 4: Lottie Animation - Now correctly hidden on small screens */}
+          <div className="hidden md:flex justify-center items-center lg:col-span-1">
             <Lottie 
               animationData={footerAnimation} 
               loop={true} 
@@ -127,7 +127,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright Section */}
-        <div className="border-t border-gray-400 mt-12 pt-6 text-center text-gray-400">
+        <div className="border-t border-gray-600 mt-12 pt-8 text-center text-gray-400">
           <p>&copy; {new Date().getFullYear()} Subhajit Sarkar. All Rights Reserved.</p>
         </div>
       </motion.div>

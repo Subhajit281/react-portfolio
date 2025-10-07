@@ -41,7 +41,7 @@ const Education = () => {
         {/* Timeline Container */}
         <div className="relative">
           {/* The Vertical Line - This correctly hides on mobile */}
-          <div className="absolute left-1/2 top-0 h-full w-1 bg-gray-100 -translate-x-1/2 hidden md:block"></div>
+          <div className="absolute left-1/2 top-0 h-full w-1 bg-gray-700 -translate-x-1/2 hidden md:block"></div>
 
           {/* Map over the educationHistory array */}
           {educationHistory.map((edu, index) => (
@@ -62,18 +62,18 @@ const Education = () => {
                 />
               </motion.div>
 
-              {/* This wrapper correctly positions the card for your alternating layout */}
+              {/* This wrapper correctly handles the alignment on desktop and centers on mobile */}
               <div
-                className={`w-full flex items-center ${
+                className={`w-full flex justify-center ${
                   index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
                 }`}
               >
-                {/* Education Card - Your design is preserved, only alignment/responsive classes are used */}
+                {/* Education Card - Your design is preserved */}
                 <motion.div
                   initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.2 }}
+                  transition={{ duration: 0.8 }}
                   className="w-full max-w-lg md:w-[45%] p-10 rounded-lg bg-gray-900/50 transition-all duration-300 transform hover:scale-105 
                              shadow-xl shadow-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-400/50 animated-gradient-border"
                 >
@@ -81,7 +81,7 @@ const Education = () => {
                   <h3 className="text-xl font-bold mb-1">{edu.degree}</h3>
                   <p className="text-md font-semibold text-gray-300 mb-3">{edu.field}</p>
                   <p className="italic text-gray-300 mb-4">{edu.school}</p>
-                  <p className="text-gray-300 text-center">{edu.description}</p>
+                  <p className="text-gray-300 text-left">{edu.description}</p>
                 </motion.div>
               </div>
             </div>

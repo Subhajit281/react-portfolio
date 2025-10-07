@@ -63,7 +63,6 @@ const InteractiveBall = ({ skill }) => {
           rotateY: tilt.rotateY,
         }}
         transition={{ type: "spring", stiffness: 120, damping: 10 }}
-        // ✨ THIS IS WHERE THE SIZE IS MADE RESPONSIVE ✨
         className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center 
                    shadow-lg shadow-cyan-400/60 border border-cyan-400/40 cursor-pointer"
         style={{
@@ -71,7 +70,6 @@ const InteractiveBall = ({ skill }) => {
           transformStyle: "preserve-3d",
         }}
       >
-        {/* ✨ AND THE ICON SIZE IS ALSO MADE RESPONSIVE ✨ */}
         <div className="text-2xl sm:text-3xl" style={{ transform: "translateZ(20px)" }}>
           {skill.icon}
         </div>
@@ -161,4 +159,3 @@ const Skills = () => {
 
 export default Skills;
 
-  
