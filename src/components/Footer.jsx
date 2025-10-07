@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaGithub, FaLinkedin, FaTwitter, FaArrowUp } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaArrowUp ,FaInstagramSquare } from 'react-icons/fa';
 import { RiArrowUpDoubleLine } from "react-icons/ri";
 // 1. Import Lottie and your animation file
 import Lottie from 'lottie-react';
@@ -53,9 +53,9 @@ const ScrollToTopButton = () => {
 
 const Footer = () => {
   const socialLinks = [
-    { name: 'GitHub', icon: <FaGithub size={24} />, url: 'https://github.com/your-username' },
-    { name: 'LinkedIn', icon: <FaLinkedin size={24} />, url: 'https://linkedin.com/in/your-username' },
-    { name: 'Twitter', icon: <FaTwitter size={24} />, url: 'https://twitter.com/your-username' },
+    { name: 'GitHub', icon: <FaGithub size={24} />, url: 'https://github.com/Subhajit281' },
+    { name: 'LinkedIn', icon: <FaLinkedin size={24} />, url: 'https://www.linkedin.com/in/subhajit-sarkar-57aa432b1/' },
+    { name: 'Instagram', icon: <FaInstagramSquare size={24} />, url: 'https://www.instagram.com/_search_for_it/' },
   ];
 
   const quickLinks = [

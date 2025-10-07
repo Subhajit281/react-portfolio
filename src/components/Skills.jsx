@@ -129,8 +129,8 @@ const Skills = () => {
   return (
     <section id="skills" className="bg-transparent text-white py-20 md:py-32">
       <div className="container max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold mb-4">Skills</h2>
-        <p className="text-lg text-gray-400 mb-12">
+        <h2 className="text-4xl font-bold mb-10 inline-block bg-gray-900/40 px-8 py-1 rounded-lg text-purple-100 [text-shadow:10px_7px_3px_rgba(0,0,0,0.9)]">Skills</h2>
+        <p className="text-lg text-gray-300 mb-12">
           Here are some of my skills on which I have been working on.
         </p>
 

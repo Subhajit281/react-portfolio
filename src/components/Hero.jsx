@@ -58,7 +58,7 @@ const Hero = () => {
                     </p>
 
                     <a
-                        href="../public/CV.pdf"
+                        href="/CV.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-3 bg-gray-900/40 border border-cyan-500 text-cyan-400 font-bold py-3 px-6 rounded-lg mt-8 text-lg 

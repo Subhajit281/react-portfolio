@@ -81,7 +81,7 @@ const Education = () => {
                   <h3 className="text-xl font-bold mb-1">{edu.degree}</h3>
                   <p className="text-md font-semibold text-gray-300 mb-3">{edu.field}</p>
                   <p className="italic text-gray-300 mb-4">{edu.school}</p>
-                  <p className="text-gray-300 text-left">{edu.description}</p>
+                  <p className="text-gray-300 text-center">{edu.description}</p>
                 </motion.div>
               </div>
             </div>
