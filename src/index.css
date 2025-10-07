@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+#home,#projects,#experience,#contact,#skills,#education,.footer{
+  background-image: url('https://res.cloudinary.com/dx8jytou0/image/upload/v1759822486/blue1_1_owzh8y.png'); 
+  
+  background-size: cover;                  /* Make the image cover the entire area */
+  background-position: center;        /* Center the image */
+  background-attachment: fixed;              /* Fix the background so it doesn't scroll */
+  background-repeat: no-repeat;              /* Prevent the image from tiling */
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(90deg); }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.spin-slow {
+  animation: spin-sow 8s linear infinite;
+}
+
+.floaty {
+  animation: floaty 2s ease-in-out infinite;
+}
+/* ✨ ADD THIS NEW ANIMATION FOR THE GRADIENT BORDER */
+@keyframes gradient-pan {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animated-gradient-border {
+  background-size: 200% 200%;
+  animation: gradient-pan 4s ease-in-out infinite;
+}
