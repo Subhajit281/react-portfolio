@@ -20,7 +20,7 @@ const Hero = () => {
             <div className="container max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between text-white">
                 
                 {/* Image Section (appears first on mobile) */}
-                <div className="flex-shrink-0 relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 md:-translate-y-16 md:-translate-x-16 order-1 md:order-2 mb-8 md:mb-0">
+                <div className="flex-shrink-0 relative w-70 h-70 md:w-80 md:h-80 lg:w-96 lg:h-96 md:-translate-y-16 md:-translate-x-16 order-1 md:order-2 mb-8 md:mb-0">
                     {/* Layer 1: The Glow (behind) */}
                     <div
                         className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-600 via-indigo-900 to-fuchsia-600 
@@ -58,7 +58,7 @@ const Hero = () => {
                     </p>
 
                     <a
-                        href="/your-cv.pdf"
+                        href="../public/CV.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-3 bg-gray-900/40 border border-cyan-500 text-cyan-400 font-bold py-3 px-6 rounded-lg mt-8 text-lg 
