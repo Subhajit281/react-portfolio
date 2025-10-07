@@ -38,15 +38,15 @@ const Hero = () => {
                 
                 {/* Left section: text content (appears second on mobile) */}
                 <div className="flex-1 text-center md:text-left md:mr-10 order-2 md:order-1">
-                    <p className="text-xl md:text-2xl mb-2 text-purple-100 [text-shadow:2px_2px_4px_rgba(0,0,0,0.7)]"> Hi, I am </p>
+                    <p className="text-2xl md:text-3xl mb-2 text-purple-100 [text-shadow:2px_2px_4px_rgba(0,0,0,0.7)]"> Hi, I am </p>
                     <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight text-blue-100 [text-shadow:2px_2px_4px_rgba(0,0,0,0.7)]"> Subhajit Sarkar</h1>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-300 mb-6 h-12 md:h-16 [text-shadow:2px_2px_4px_rgba(0,0,0,0.7)]">
                         <span className="text-white">I am a </span>
                         <TypeAnimation
                             sequence={[
-                                'Web Developer', 1500,
-                                'Problem Solver', 1500,
-                                'Lifelong Learner', 1500,
+                                'Web Developer', 500,
+                                'Problem Solver', 500,
+                                'Lifelong Learner', 500,
                             ]}
                             wrapper="span"
                             speed={50}
