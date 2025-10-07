@@ -73,7 +73,7 @@ const Education = () => {
                   initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
+                  transition={{ duration: 0.2 }}
                   className="w-full max-w-lg md:w-[45%] p-10 rounded-lg bg-gray-900/50 transition-all duration-300 transform hover:scale-105 
                              shadow-xl shadow-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-400/50 animated-gradient-border"
                 >
