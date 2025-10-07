@@ -2,7 +2,7 @@ import React from 'react';
 import Lottie from 'lottie-react';
 import { motion } from 'framer-motion';
 // Make sure you download a Lottie JSON and place it here
-import preloaderAnimation from '../assets/Loading sand clock.json';
+import preloaderAnimation from '../assets/sand.json';
 
 const Preloader = () => {
   return (

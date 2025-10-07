@@ -18,7 +18,7 @@ const App = () => {
     // 2. Set a timer to hide the preloader after a delay
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 3000); // 3 seconds. You can change this duration.
+    }, 2000); // 3 seconds. You can change this duration.
 
     // Cleanup the timer
     return () => clearTimeout(timer);
