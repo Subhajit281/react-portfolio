@@ -20,8 +20,8 @@ const Projects = () => {
       description: 'A 3D portfolio project built after learning Reactjs and implementing cool animations from Framer Motion.',
       imageUrl: 'https://res.cloudinary.com/dx8jytou0/image/upload/v1759833302/Screenshot_2025-10-07_160636_xqkzth.png', // Place your project screenshot in the 'public'folder
       tags: ['#reactjs', '#tailwind', '#javascript'],
-      githubUrl: 'https://github.com/your-username/3d-portfolio',
-      liveUrl: 'https://3d-portfolio.example.com',
+      githubUrl: 'https://github.com/Subhajit281/react-portfolio.git',
+      liveUrl: 'https://subhajit-sarkar.vercel.app',
     },
     // Add more projects here
   ];
