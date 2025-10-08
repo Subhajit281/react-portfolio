@@ -1,5 +1,5 @@
 import React from 'react';
-import myProfilePic from '../assets/Subhajit6.png';
+import myProfilePic from '../assets/Subhajit7.png';
 import Lottie from "lottie-react";
 import hexagonAnimation from "../assets/hexagon.json";
 import { TypeAnimation } from 'react-type-animation';
