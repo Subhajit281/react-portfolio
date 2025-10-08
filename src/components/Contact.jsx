@@ -3,10 +3,7 @@ import { motion } from 'framer-motion';
 import emailjs from '@emailjs/browser';
 import Lottie from 'lottie-react';
 import { FaPaperPlane, FaSpinner, FaCheckCircle, FaExclamationCircle } from 'react-icons/fa';
-
-// 1. Import multiple animation files
 import contactAnimation from '../assets/Robot.json';
-// You would need to add a second animation file to your assets folder for this to work
 import contactAnimation2 from '../assets/paper plane.json'; 
 
 
@@ -24,10 +21,10 @@ const Contact = () => {
     setFormStatus({ submitting: true, success: null, message: '' });
 
     emailjs.sendForm(
-        'service_xfbzcp1',      // Your EmailJS Service ID
-        'template_xw5vudo',     // Your EmailJS Template ID
+        'service_xfbzcp1',      //  EmailJS Service ID
+        'template_xw5vudo',     // EmailJS Template ID
         form.current,
-        'TFePzcZ9_ZF8waaZd'      // Your EmailJS Public Key
+        'TFePzcZ9_ZF8waaZd'      //  EmailJS Public Key
       )
       .then((result) => {
           console.log(result.text);
@@ -86,8 +83,6 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* ✨ THIS IS THE DIV I'VE UPDATED ✨ */}
-          {/* It is now hidden by default and only appears on medium screens and up */}
           <motion.div
             className="w-full md:w-1/2 hidden md:flex flex-col items-center"
             initial={{ opacity: 0, x: 100 }}

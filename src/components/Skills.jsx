@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-// All necessary icons, consolidated from our previous discussions
+
 import {
   FaReact,
   FaHtml5,
@@ -28,7 +28,7 @@ import {
 } from "react-icons/si";
 
 
-// This is the reusable component for each interactive skill orb
+// reusable component for each interactive skill orb
 const InteractiveBall = ({ skill }) => {
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
   const [gradient, setGradient] = useState("50% 50%");
@@ -79,7 +79,7 @@ const InteractiveBall = ({ skill }) => {
   );
 };
 
-// This is the main component that lays out the entire skills section
+// main component \
 const Skills = () => {
   const categories = [
     {

@@ -27,7 +27,6 @@ const Navbar = () => {
                            ${isScrolled || isOpen ? 'bg-gray-900/70 backdrop-blur-md rounded-2xl' : 'bg-gray-700/40'} 
                            ${isOpen ? 'p-4 rounded-xl' : 'p-2 rounded-full'}`}
             >
-                {/* ✨ THIS IS THE LINE I'VE UPDATED FOR RESPONSIVENESS ✨ */}
                 <a href="#home" className="flex items-center gap-2 text-xl md:text-2xl font-bold text-cyan-100 hover:text-white transition-colors p-2">
                     <FaCode size={26} />
                     <span>Subhajit</span>

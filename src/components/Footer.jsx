@@ -4,16 +4,13 @@ import { FaGithub, FaLinkedin, FaInstagramSquare, FaEye } from 'react-icons/fa';
 import { RiArrowUpDoubleLine } from "react-icons/ri";
 import Lottie from 'lottie-react';
 import footerAnimation from '../assets/Robot TFU.json';
-
-// ✨ CORRECTED: Import the already-initialized 'app' from your config file
 import app from '../firebaseConfig'; 
 import { getFirestore, doc, updateDoc, increment, onSnapshot } from "firebase/firestore";
 
-// ✨ CORRECTED: We no longer initialize Firebase here. We just get the database service.
-const db = getFirestore(app);
+const db = getFirestore(app);     //database added from firebase
 
 
-// This is a sub-component for the "Back to Top" button
+// sub-component for the "Back to Top" button
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
@@ -150,11 +147,11 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright Section - NOW RESPONSIVE */}
+        {/* Copyright Section - */}
         <div className="border-t border-gray-600 mt-12 pt-8 text-center text-gray-400 flex flex-col md:flex-row justify-between items-center">
           <p>&copy; {new Date().getFullYear()} Subhajit Sarkar. All Rights Reserved.</p>
           
-          {/* This is the new Visitor Counter display */}
+          {/* new Visitor Counter display */}
           {visitorCount !== null && (
             <div className="flex items-center gap-2 mt-4 md:mt-0">
               <FaEye />

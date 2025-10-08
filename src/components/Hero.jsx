@@ -12,14 +12,13 @@ const Hero = () => {
                 animationData={hexagonAnimation}
                 loop={true}
                 autoplay={true}
-                // ✨ THIS IS THE LINE I'VE UPDATED FOR RESPONSIVE POSITIONING ✨
                 className="absolute top-[40%] md:top-1/2 left-1/2 md:left-3/4 -translate-x-1/2 -translate-y-1/2 w-full h-full md:w-[1000px] md:h-[1000px] z-0 opacity-80"
             />
 
-            {/* Main content container, aligned with navbar */}
+            {/* Main content container*/}
             <div className="container max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between text-white">
                 
-                {/* Image Section (appears first on mobile) */}
+                {/* Image Section */}
                 <div className="flex-shrink-0 relative w-75 h-75 md:w-85 md:h-85 lg:w-96 lg:h-96 md:-translate-y-16 md:-translate-x-16 order-1 md:order-2 mb-8 md:mb-0">
                     {/* Layer 1: The Glow (behind) */}
                     <div
@@ -36,7 +35,7 @@ const Hero = () => {
                     </div>
                 </div>
                 
-                {/* Left section: text content (appears second on mobile) */}
+                {/* Left section: text content */}
                 <div className="flex-1 text-center md:text-left md:mr-10 order-2 md:order-1">
                     <p className="text-2xl md:text-3xl mb-2 text-purple-100 [text-shadow:2px_2px_4px_rgba(0,0,0,0.7)]"> Hi, I am </p>
                     <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight text-blue-100 [text-shadow:2px_2px_4px_rgba(0,0,0,0.7)]"> Subhajit Sarkar</h1>

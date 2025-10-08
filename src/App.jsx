@@ -8,7 +8,7 @@ import Projects from './components/Projects';
 import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import Preloader from './components/preLoader'; // Your preloader component
+import Preloader from './components/preLoader'; //  preloader component
 
 const App = () => {
   // 1. Create a state to manage the loading status
@@ -18,7 +18,7 @@ const App = () => {
     // 2. Set a timer to hide the preloader after a delay
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000); // 3 seconds. You can change this duration.
+    }, 2000); // 3 seconds. can change this duration.
 
     // Cleanup the timer
     return () => clearTimeout(timer);
@@ -26,12 +26,12 @@ const App = () => {
 
   return (
     <>
-      {/* 3. This component allows the preloader to have an exit animation */}
+      {/* 3.  component that allows the preloader to have an exit animation */}
       <AnimatePresence>
         {loading && <Preloader />}
       </AnimatePresence>
 
-      {/* 4. This conditionally renders your portfolio content only when loading is false */}
+      {/* 4.conditionally renders portfolio content only when loading is false */}
       {!loading && (
         <motion.div
           initial={{ opacity: 0 }}

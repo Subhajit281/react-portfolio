@@ -31,7 +31,6 @@ const Education = () => {
 
   return (
     <section id="education" className="bg-transparent text-white py-20 md:py-32">
-      {/* This container correctly aligns your content with the navbar */}
       <div className="container max-w-6xl mx-auto px-6 text-center">
         <h2 className="text-4xl font-bold mb-10 inline-block bg-gray-900/40 px-8 py-1 rounded-lg text-purple-100 [text-shadow:10px_7px_3px_rgba(0,0,0,0.9)]">Education</h2>
         <p className="text-lg text-white mb-16 leading-relaxed [text-shadow:6px_4px_2px_rgba(0,0,0,0.9)]">
@@ -40,14 +39,14 @@ const Education = () => {
 
         {/* Timeline Container */}
         <div className="relative">
-          {/* The Vertical Line - This correctly hides on mobile */}
+          {/* The Vertical Line */}
           <div className="absolute left-1/2 top-0 h-full w-1 bg-gray-700 -translate-x-1/2 hidden md:block"></div>
 
           {/* Map over the educationHistory array */}
           {educationHistory.map((edu, index) => (
             // This wrapper correctly stacks the node and card on mobile
             <div key={index} className="relative mb-12 flex flex-col items-center md:items-stretch">
-              {/* Timeline Node - This logic is responsive */}
+              {/* Timeline Node  */}
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
@@ -68,7 +67,7 @@ const Education = () => {
                   index % 2 === 0 ? 'md:justify-start' : 'md:justify-end'
                 }`}
               >
-                {/* Education Card - Your design is preserved */}
+                {/* Education Card */}
                 <motion.div
                   initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
                   whileInView={{ opacity: 1, x: 0 }}

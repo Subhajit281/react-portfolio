@@ -1,6 +1,5 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-// Icons are no longer needed for the timeline nodes, but you might use them elsewhere
 import { FaBriefcase, FaGraduationCap, FaCode } from 'react-icons/fa';
 
 const Experience = () => {
@@ -41,13 +40,13 @@ const Experience = () => {
         </p>
 
         <div className="relative">
-          {/* The Vertical Line - Now correctly hidden on mobile */}
+          {/* The Vertical Line */}
           <div className="absolute left-1/2 top-0 h-full w-1 bg-gray-700 -translate-x-1/2 hidden md:block"></div>
 
           {experiences.map((exp, index) => (
             // This wrapper now correctly stacks the node and card on mobile
             <div key={index} className="relative mb-12 flex flex-col items-center md:items-stretch">
-              {/* Timeline Node - Now responsive */}
+              {/* Timeline Node */}
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}

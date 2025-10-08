@@ -4,12 +4,11 @@ import { FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
 
 const Projects = () => {
-  // You can easily update your projects information here
   const projects = [
     {
       title: 'CSS Website',
       description: '( ONGOING PROJECT ) A web-based platform for students that allows them to search for any materials and knows about the upcoming events and happenings  in the branch.',
-      imageUrl: '/project-douvt-hub.jpg', // Place your project screenshot in the 'public' folder
+      imageUrl: '/project-douvt-hub.jpg', 
       tags: ['#html', '#css', '#javascript'],
       githubUrl: 'https://github.com/your-username/douvt-hub',
       liveUrl: 'https://douvt-hub.example.com',
@@ -18,7 +17,7 @@ const Projects = () => {
     {
       title: '3D Portfolio',
       description: 'A 3D portfolio project built after learning Reactjs and implementing cool animations from Framer Motion.',
-      imageUrl: 'https://res.cloudinary.com/dx8jytou0/image/upload/v1759833302/Screenshot_2025-10-07_160636_xqkzth.png', // Place your project screenshot in the 'public'folder
+      imageUrl: 'https://res.cloudinary.com/dx8jytou0/image/upload/v1759833302/Screenshot_2025-10-07_160636_xqkzth.png',
       tags: ['#reactjs', '#tailwind', '#javascript'],
       githubUrl: 'https://github.com/Subhajit281/react-portfolio.git',
       liveUrl: 'https://subhajit-sarkar.vercel.app',
@@ -34,7 +33,7 @@ const Projects = () => {
           Following projects showcases my skills and experience through real-world examples of my work. Each project is briefly described with links to code repositories and live demos.
         </p>
 
-        {/* Responsive Grid for Project Cards */}
+        {/*  Grid for Project Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
@@ -45,7 +44,7 @@ const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ scale: 1.05, y: -10 }} // This is the hover moving effect
+              whileHover={{ scale: 1.05, y: -10 }} //  hover moving effect
             >
               <div className="relative">
                 <img src={project.imageUrl} alt={project.title} className="w-full h-48 object-cover" />
