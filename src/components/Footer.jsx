@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-// ✨ I've added FaEye for the counter and FaInstagramSquare from your code
 import { FaGithub, FaLinkedin, FaInstagramSquare, FaEye } from 'react-icons/fa';
 import { RiArrowUpDoubleLine } from "react-icons/ri";
 import Lottie from 'lottie-react';
 import footerAnimation from '../assets/Robot TFU.json';
 
-// ✨ Import Firebase tools and your configuration
-import { initializeApp } from "firebase/app";
+// ✨ CHANGE 1: Import the already-initialized 'app' from your config file
+import app from '../firebaseConfig'; 
 import { getFirestore, doc, updateDoc, increment, onSnapshot } from "firebase/firestore";
-import { firebaseConfig } from '../firebaseConfig';
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
+// ✨ CHANGE 2: We no longer initialize Firebase here. We just get the database service.
 const db = getFirestore(app);
 
 
@@ -59,10 +56,8 @@ const ScrollToTopButton = () => {
 };
 
 const Footer = () => {
-  // ✨ Add state to hold the visitor count
   const [visitorCount, setVisitorCount] = useState(null);
 
-  // ✨ This useEffect runs once to update and fetch the count
   useEffect(() => {
     const counterDocRef = doc(db, 'visitors', 'counter');
 
@@ -155,11 +150,11 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* ✨ Copyright Section - NOW RESPONSIVE ✨ */}
+        {/* Copyright Section - NOW RESPONSIVE */}
         <div className="border-t border-gray-600 mt-12 pt-8 text-center text-gray-400 flex flex-col md:flex-row justify-between items-center">
           <p>&copy; {new Date().getFullYear()} Subhajit Sarkar. All Rights Reserved.</p>
           
-          {/* ✨ This is the new Visitor Counter display ✨ */}
+          {/* This is the new Visitor Counter display */}
           {visitorCount !== null && (
             <div className="flex items-center gap-2 mt-4 md:mt-0">
               <FaEye />
