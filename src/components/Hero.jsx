@@ -1,5 +1,5 @@
 import React from 'react';
-import myProfilePic from '../assets/Subhajit4.png';
+import myProfilePic from '../assets/Subhajit6.png';
 import Lottie from "lottie-react";
 import hexagonAnimation from "../assets/hexagon.json";
 import { TypeAnimation } from 'react-type-animation';
@@ -31,7 +31,7 @@ const Hero = () => {
                         <img
                             src={myProfilePic}
                             alt="Subhajit"
-                            className="w-80 h-full object-cover"
+                            className="w-full h-full object-cover"
                         />
                     </div>
                 </div>
@@ -56,6 +56,7 @@ const Hero = () => {
                     <p className="text-base md:text-lg text-white max-w-2xl mx-auto md:mx-0 leading-relaxed [text-shadow:1px_1px_2px_rgba(0,0,0,0.7)]">
                         I’m a Computer Science and Engineering student at NIT Silchar, passionate about coding, problem-solving, and building projects. I love exploring new technologies and am always eager to learn and grow as a developer.
                     </p>
+                    
 
                     <a
                         href="/CV.pdf"
