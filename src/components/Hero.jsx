@@ -37,7 +37,7 @@ const Hero = () => {
                 
                 {/* Left section: text content */}
                 <div className="flex-1 text-center md:text-left md:mr-10 order-2 md:order-1">
-                    <p className="text-2xl md:text-3xl mb-2 text-purple-100 [text-shadow:2px_2px_4px_rgba(0,0,0,0.7)]"> Hi, I am </p>
+                    <p className="text-3xl md:text-4xl mb-2 font-bold text-indigo-200 [text-shadow:2px_2px_4px_rgba(0,0,0,0.7)]"> Hi, I am </p>
                     <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 leading-tight text-blue-100 [text-shadow:2px_2px_4px_rgba(0,0,0,0.7)]"> Subhajit Sarkar</h1>
                     <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-cyan-300 mb-6 h-12 md:h-16 [text-shadow:2px_2px_4px_rgba(0,0,0,0.7)]">
                         <span className="text-white">I am a </span>
@@ -63,7 +63,7 @@ const Hero = () => {
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-3 bg-gray-900/40 border border-cyan-500 text-cyan-400 font-bold py-3 px-6 rounded-lg mt-8 text-lg 
                                    transition-all duration-300 transform hover:scale-105 
-                                   shadow-lg shadow-cyan-300/20 hover:shadow-xl hover:shadow-cyan-400/30">
+                                   shadow-lg shadow-cyan-300/50 hover:shadow-lg hover:shadow-cyan-400/60">
                         Check CV <FaArrowUpRightFromSquare />
                     </a>
                 </div>

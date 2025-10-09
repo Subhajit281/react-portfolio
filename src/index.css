@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 #home,#projects,#experience,#contact,#skills,#education,.footer{
-  background-image: url('https://res.cloudinary.com/dx8jytou0/image/upload/f_webp/v1759822486/blue1_1_owzh8y.png'); 
+  background-image: url('https://res.cloudinary.com/dx8jytou0/image/upload/v1760031765/blue1_1_owzh8y_imgupscaler.ai_v1_Fast__2K_uq4mdd.jpg'); 
   
   background-size: cover;                  /* Make the image cover the entire area */
   background-position: center;        /* Center the image */
@@ -43,3 +43,4 @@
   background-size: 200% 200%;
   animation: gradient-pan 4s ease-in-out infinite;
 }
+

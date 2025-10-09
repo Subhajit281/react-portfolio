@@ -54,8 +54,8 @@ const Contact = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="relative border-t border-white rounded-lg bg-gray-900/60  transition-all duration-300 transform hover:scale-105 
-                           shadow-xl shadow-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-400/50 animated-gradient-border p-[1px] ">
+            <div className="relative border-t  rounded-lg bg-gray-900/60 border-b border-cyan-400 transition-all duration-300 transform hover:scale-105 
+                           shadow-xl shadow-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-400/50 animated-gradient-border p-[1px] ">
               <div className=" w-full h-full rounded-md p-8">
                 <form ref={form} onSubmit={handleSubmit} className="text-left">
                   <div className="mb-6">

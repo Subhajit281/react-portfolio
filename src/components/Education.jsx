@@ -40,7 +40,7 @@ const Education = () => {
         {/* Timeline Container */}
         <div className="relative">
           {/* The Vertical Line */}
-          <div className="absolute left-1/2 top-0 h-full w-1 bg-gray-700 -translate-x-1/2 hidden md:block"></div>
+          <div className="absolute left-1/2 top-0 h-full w-1 bg-gray-300 -translate-x-1/2 hidden md:block"></div>
 
           {/* Map over the educationHistory array */}
           {educationHistory.map((edu, index) => (
@@ -73,8 +73,8 @@ const Education = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.2 }}
-                  className="w-full max-w-lg md:w-[45%] p-10 rounded-lg bg-gray-900/50 transition-all duration-300 transform hover:scale-105 
-                             shadow-xl shadow-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-400/50 animated-gradient-border"
+                  className="w-full max-w-lg md:w-[40%] p-10 border-b border-cyan-400 rounded-lg bg-gray-900/50 backdrop-blur-sm transition-all duration-300 transform hover:scale-105 
+                             shadow-xl shadow-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-400/60 animated-gradient-border"
                 >
                   <p className="text-sm text-cyan-400 mb-1">{edu.duration}</p>
                   <h3 className="text-xl font-bold mb-1">{edu.degree}</h3>

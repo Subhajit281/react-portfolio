@@ -58,7 +58,7 @@ const InteractiveBall = ({ skill }) => {
         }}
         transition={{ type: "spring", stiffness: 120, damping: 10 }}
         className="w-14 h-14 sm:w-16 sm:h-16 rounded-full flex items-center justify-center 
-                   shadow-lg shadow-cyan-400/60 border border-cyan-400/40 cursor-pointer"
+                   shadow-lg shadow-cyan-400/80 border border-cyan-400/40 cursor-pointer"
         style={{
           background: `radial-gradient(circle at ${gradient}, rgba(34,216,238,0.35), rgba(17, 24, 39, 0.8))`,
           transformStyle: "preserve-3d",
@@ -121,7 +121,7 @@ const Skills = () => {
           {categories.map((category, index) => (
             <div
               key={index}
-              className=" bg-gray-900/40 transition-all duration-300 transform hover:scale-105 shadow-xl shadow-cyan-300/40 hover:shadow-2xl hover:shadow-cyan-400/50 animated-gradient-border p-8 rounded-lg "
+              className=" bg-gray-900/40 transition-all border-b border-cyan-400 duration-300 transform hover:scale-105 shadow-xl shadow-cyan-300/40 hover:shadow-2xl hover:shadow-cyan-400/50 animated-gradient-border p-8 rounded-lg "
             >
               <h3 className="text-2xl font-semibold mb-8 text-cyan-400">
                 {category.title}

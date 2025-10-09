@@ -38,8 +38,8 @@ const Projects = () => {
           {projects.map((project, index) => (
             <motion.div
               key={index}
-              className="rounded-lg bg-gray-900/30 backdrop-blur-sm transition-all duration-300 transform hover:scale-105 
-                         shadow-xl shadow-cyan-400/40 hover:shadow-2xl hover:shadow-cyan-400/60 animated-gradient-border overflow-hidden"
+              className="rounded-lg bg-gray-900/30 border-b border-cyan-400 backdrop-blur-sm transition-all duration-300 transform hover:scale-105 
+                         shadow-xl shadow-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-400/60 animated-gradient-border overflow-hidden"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
