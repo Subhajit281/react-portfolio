@@ -8,8 +8,6 @@ import {
   FaCss3Alt,
   FaNodeJs,
   FaPython,
-  FaDocker,
-  FaJava,
 } from "react-icons/fa";
 import { IoLogoJavascript } from "react-icons/io5";
 import {
@@ -21,10 +19,6 @@ import {
   SiFirebase,
   SiCplusplus,
   SiC,
-  SiTensorflow,
-  SiPytorch,
-  SiOpencv,
-  SiJupyter,
 } from "react-icons/si";
 
 
@@ -100,7 +94,6 @@ const Skills = () => {
         { name: "C", icon: <SiC className="text-blue-700" /> },
         { name: "Python", icon: <FaPython className="text-yellow-500" /> },
         { name: "JavaScript", icon: <IoLogoJavascript className="text-yellow-400" /> },
-        { name: "Java", icon: <FaJava className="text-red-500" /> },
       ],
     },
     {
@@ -111,19 +104,9 @@ const Skills = () => {
         { name: "MySQL", icon: <SiMysql className="text-blue-400" /> },
         { name: "MongoDB", icon: <SiMongodb className="text-green-600" /> },
         { name: "Firebase", icon: <SiFirebase className="text-yellow-500" /> },
-        { name: "Docker", icon: <FaDocker className="text-blue-500" /> },
       ],
     },
-    {
-      title: "Machine Learning",
-      skills: [
-        { name: "Python", icon: <FaPython className="text-yellow-500" /> },
-        { name: "Jupyter", icon: <SiJupyter className="text-orange-400" /> },
-        { name: "TensorFlow", icon: <SiTensorflow className="text-orange-500" /> },
-        { name: "PyTorch", icon: <SiPytorch className="text-red-500" /> },
-        { name: "OpenCV", icon: <SiOpencv className="text-blue-400" /> },
-      ],
-    },
+    
   ];
 
   return (
