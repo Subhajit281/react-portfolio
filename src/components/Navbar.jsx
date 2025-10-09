@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaBars, FaTimes, FaCode } from "react-icons/fa";
+import { FaGithub } from "react-icons/fa6";
+
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -40,8 +42,27 @@ const Navbar = () => {
                     <a href="#experience" className="text-gray-300 hover:text-cyan-400 font-semibold transition-colors">Experience</a>
                     <a href="#education" className="text-gray-300 hover:text-cyan-400 font-semibold transition-colors">Education</a>
                     <a href="#contact" className="text-gray-300 hover:text-cyan-400 font-semibold transition-colors">Contact Me</a>
-                </div>
+                   
 
+                   
+                </div>
+                <div>
+                    {/* GitHub Button for Desktop */}
+                    <a href="https://github.com/Subhajit281" target="_blank" rel="noopener noreferrer" className="hidden md:flex items-center gap-  py-2 px-4
+                     bg-gray-900/40 border border-cyan-500 text-cyan-400 font-bold rounded-3xl text-md
+                                   transition-all duration-300 transform hover:scale-105
+                                   shadow-lg shadow-cyan-400/30 hover:shadow-xl hover:shadow-cyan-400/30">
+                        <FaGithub size={20} className="mr-1" />
+                        <span>GitHub</span>
+                    </a>
+
+                    {/* Mobile menu icon */}
+                    <div className="md:hidden">
+                        <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none p-2">
+                            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                        </button>
+                    </div>
+                </div>    
                 {/* Mobile menu icon */}
                 <div className="md:hidden">
                     <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none p-2">
@@ -61,6 +82,11 @@ const Navbar = () => {
                 <a href="#experience" className="text-cyan-400 hover:text-white transition-colors block p-4 text-center" onClick={() => setIsOpen(false)}>Experience</a>
                 <a href="#education" className="text-cyan-400 hover:text-white transition-colors block p-4 text-center" onClick={() => setIsOpen(false)}>Education</a>
                 <a href="#contact" className="text-cyan-400 hover:text-white transition-colors block p-4 text-center" onClick={() => setIsOpen(false)}>Contact me</a>
+                                {/* GitHub link for Mobile Menu */}
+                <a href="https://github.com/Subhajit281" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-white transition-colors block p-4 text-center border-t border-gray-600"> 
+                   <span> GitHub</span>
+                </a>
+                 
             </div>
         </nav>
     );
