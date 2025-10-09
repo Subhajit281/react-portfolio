@@ -56,12 +56,7 @@ const Navbar = () => {
                         <span>GitHub</span>
                     </a>
 
-                    {/* Mobile menu icon */}
-                    <div className="md:hidden">
-                        <button onClick={() => setIsOpen(!isOpen)} className="text-white focus:outline-none p-2">
-                            {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-                        </button>
-                    </div>
+                    
                 </div>    
                 {/* Mobile menu icon */}
                 <div className="md:hidden">
