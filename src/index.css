@@ -1,11 +1,12 @@
 @import "tailwindcss";
 
 #home,#projects,#experience,#contact,#skills,#education,.footer{
-  background-image: url('https://res.cloudinary.com/dx8jytou0/image/upload/v1760031765/blue1_1_owzh8y_imgupscaler.ai_v1_Fast__2K_uq4mdd.jpg'); 
-  
+   background-image: url('https://res.cloudinary.com/dx8jytou0/image/upload/v1760031765/blue1_1_owzh8y_imgupscaler.ai_v1_Fast__2K_uq4mdd.jpg');  
+
+  width:100vw;
   background-size: cover;                  /* Make the image cover the entire area */
   background-position: center;        /* Center the image */
-  background-attachment: fixed;              /* Fix the background so it doesn't scroll */
+   background-attachment:fixed;            /*  Fix the background so it doesn't scroll */
   background-repeat: no-repeat;              /* Prevent the image from tiling */
 }
 

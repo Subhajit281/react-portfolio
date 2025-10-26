@@ -9,6 +9,7 @@ import Education from './components/Education';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Preloader from './components/preLoader'; //  preloader component
+import Chatbot from './components/Chatbot';
 
 const App = () => {
   // 1. Create a state to manage the loading status
@@ -46,6 +47,7 @@ const App = () => {
           <Education />
           <Contact />
           <Footer />
+          <Chatbot />
         </motion.div>
       )}
     </>
