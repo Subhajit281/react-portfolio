@@ -9,7 +9,7 @@ const Projects = () => {
       title: 'CSS Website',
       description: 'A web-based platform for students that allows them to search for any materials and knows about the upcoming events and happenings  in the branch.',
       imageUrl: 'https://res.cloudinary.com/dx8jytou0/image/upload/v1761573921/css_orgmjw.jpg', 
-      tags: ['#html', '#css', '#javascript'],
+      tags: ['#reactjs', '#tailwindcss', '#javascript'],
       githubUrl: 'https://github.com/ComputerScienceSoceityNITS/css-official-website-2025-26.git',
       liveUrl: 'https://www.css-nits.in',
     },
