@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-// ✨ ADD THESE LINES FOR ERUDA ✨
+//
 // Only import and initialize Eruda if we are in development mode
 if (import.meta.env.DEV) {
   import('eruda').then((eruda) => eruda.default.init());

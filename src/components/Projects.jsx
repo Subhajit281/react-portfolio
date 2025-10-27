@@ -7,11 +7,11 @@ const Projects = () => {
   const projects = [
     {
       title: 'CSS Website',
-      description: '( ONGOING PROJECT ) A web-based platform for students that allows them to search for any materials and knows about the upcoming events and happenings  in the branch.',
-      imageUrl: '/project-douvt-hub.jpg', 
+      description: 'A web-based platform for students that allows them to search for any materials and knows about the upcoming events and happenings  in the branch.',
+      imageUrl: 'https://res.cloudinary.com/dx8jytou0/image/upload/v1761573921/css_orgmjw.jpg', 
       tags: ['#html', '#css', '#javascript'],
-      githubUrl: 'https://github.com/your-username/douvt-hub',
-      liveUrl: 'https://douvt-hub.example.com',
+      githubUrl: 'https://github.com/ComputerScienceSoceityNITS/css-official-website-2025-26.git',
+      liveUrl: 'https://www.css-nits.in',
     },
     
     {
