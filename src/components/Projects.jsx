@@ -8,7 +8,7 @@ const Projects = () => {
     {
       title: 'CSS Website',
       description: 'A web-based platform for students that allows them to search for any materials and knows about the upcoming events and happenings  in the branch.',
-      imageUrl: 'https://res.cloudinary.com/dx8jytou0/image/upload/v1761573921/css_orgmjw.jpg', 
+      imageUrl: 'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1765553890/Screenshot_2025-12-12_211031_wzltor.png', 
       tags: ['#reactjs', '#tailwindcss', '#javascript'],
       githubUrl: 'https://github.com/ComputerScienceSoceityNITS/css-official-website-2025-26.git',
       liveUrl: 'https://www.css-nits.in',
@@ -17,7 +17,7 @@ const Projects = () => {
     {
       title: '3D Portfolio',
       description: 'A 3D portfolio project built after learning Reactjs and implementing cool animations from Framer Motion.',
-      imageUrl: 'https://res.cloudinary.com/dx8jytou0/image/upload/v1761574596/Screenshot_2025-10-27_194749_jczcxc.png',
+      imageUrl: 'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1765553606/Screenshot_2025-12-12_210517_ehytem.png',
       tags: ['#reactjs', '#tailwind', '#javascript'],
       githubUrl: 'https://github.com/Subhajit281/react-portfolio.git',
       liveUrl: 'https://subhajit-sarkar.vercel.app',
