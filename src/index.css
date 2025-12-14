@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 #home,#projects,#experience,#contact,#skills,#education,.footer{
-   background-image: url('https://res.cloudinary.com/dx8jytou0/image/upload/v1760031765/blue1_1_owzh8y_imgupscaler.ai_v1_Fast__2K_uq4mdd.jpg');  
+   background-image: url('https://res.cloudinary.com/dyxbvlzcl/image/upload/v1765736927/blue1_1_owzh8y_imgupscaler.ai_v1_Fast__2K_kcyfxi.jpg');  
 
   width:100vw;
   background-size: cover;                  /* Make the image cover the entire area */

@@ -22,7 +22,7 @@ const Hero = () => {
                 <div className="flex-shrink-0 relative w-75 h-75 md:w-85 md:h-85 lg:w-96 lg:h-96 md:-translate-y-16 md:-translate-x-16 order-1 md:order-2 mb-8 md:mb-0">
                     {/* Layer 1: The Glow (behind) */}
                     <div
-                        className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-600 via-indigo-900 to-fuchsia-600 
+                        className="absolute inset-0 rounded-full bg-linear-to-br from-purple-600 via-indigo-900 to-fuchsia-600 
                                    filter blur-2xl opacity-60 z-10">
                     </div>
                     {/* Layer 2: The Sharp Image (on top) */}
