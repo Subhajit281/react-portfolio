@@ -32,6 +32,7 @@ const Projects = () => {
       githubUrl: 'https://github.com/Subhajit281/react-portfolio.git',
       liveUrl: 'https://subhajit-sarkar.vercel.app',
     },
+    
     // Add more projects here
   ];
 
@@ -83,7 +84,7 @@ const Projects = () => {
           ))}
         </div>
       </div>
-      <div className="flex justify-center mt-12 text-gray-400 text-sm" >*If you like my projects try adding a star to the github repositories, it motivates me a lot</div>
+      <div className="flex justify-center mt-14 text-gray-400 text-sm" >*If you like my works try adding a star to the github repositories, it motivates me a lot</div>
     </section>
   );
 };
