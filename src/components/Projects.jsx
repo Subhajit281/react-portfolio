@@ -83,6 +83,7 @@ const Projects = () => {
           ))}
         </div>
       </div>
+      <div className="flex justify-center mt-12 text-gray-400 text-sm" >*If you like my projects try adding a star to the github repositories, it motivates me a lot</div>
     </section>
   );
 };
