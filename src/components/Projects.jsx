@@ -28,7 +28,7 @@ const Projects = () => {
       title: '3D Portfolio',
       description: 'A 3D portfolio project built after learning Reactjs and implementing cool animations from Framer Motion.',
       imageUrl: 'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1765553606/Screenshot_2025-12-12_210517_ehytem.png',
-      tags: ['#ReactJS', '#TailwindCSS', '#Javascript'],
+      tags: ['ReactJS', 'TailwindCSS', 'Javascript'],
       githubUrl: 'https://github.com/Subhajit281/react-portfolio.git',
       liveUrl: 'https://subhajit-sarkar.vercel.app',
     },
