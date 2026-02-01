@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion } from 'framer-motion';
 import { FaGithub } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
@@ -9,11 +10,20 @@ const Projects = () => {
       title: 'CSS Website',
       description: 'A web-based platform for students that allows them to search for any materials and knows about the upcoming events and happenings  in the branch.',
       imageUrl: 'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1765553890/Screenshot_2025-12-12_211031_wzltor.png', 
-      tags: ['#reactjs', '#tailwindcss', '#javascript'],
+      tags: ['#reactJS', '#tailwindcss', '#javascript'],
       githubUrl: 'https://github.com/ComputerScienceSoceityNITS/css-official-website-2025-26.git',
       liveUrl: 'https://www.css-nits.in',
     },
-    
+
+    {
+      title: 'Agroww CropCare',
+      description: 'An all-in-one fullstack platform to manage crops, get weather alerts, and to make better farming decisions.',
+      imageUrl: 'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1769956624/agroww_oxe0b9.jpg',
+      tags: ['#reactJS', '#tailwind', '#javascript',"#MongoDB", "#expressJS","#nodeJS"],
+      githubUrl: 'https://github.com/Subhajit281/Agroww-CropCare.git',
+      liveUrl: 'https://agroww-cropcare.onrender.com',
+    },
+
     {
       title: '3D Portfolio',
       description: 'A 3D portfolio project built after learning Reactjs and implementing cool animations from Framer Motion.',
