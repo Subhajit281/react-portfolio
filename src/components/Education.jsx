@@ -21,7 +21,7 @@ const Education = () => {
       description:
         'Focused on Physics, Chemistry, Mathematics, and Computer Science, achieving a strong academic foundation for my engineering studies.',
       imageUrl:
-        'https://pbs.twimg.com/profile_images/1713141670886133760/l0-yb5OB_400x400.png',
+        'https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Jawahar_Navodaya_Vidyalaya_logo.png/250px-Jawahar_Navodaya_Vidyalaya_logo.png',
     },
     {
       duration: '2017 - 2022',
@@ -31,7 +31,7 @@ const Education = () => {
       description:
         'Focused on a variety of subjects, achieving a strong academic foundation for my further studies.',
       imageUrl:
-        'https://pbs.twimg.com/profile_images/1713141670886133760/l0-yb5OB_400x400.png',
+        'https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Jawahar_Navodaya_Vidyalaya_logo.png/250px-Jawahar_Navodaya_Vidyalaya_logo.png',
     },
   ];
 
