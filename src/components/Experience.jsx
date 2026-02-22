@@ -33,6 +33,16 @@ const Experience = () => {
       imageUrl:
         'https://media.licdn.com/dms/image/v2/C4D0BAQGdVxGBlcBALw/company-logo_200_200/company-logo_200_200/0/1674410109310?e=2147483647&v=beta&t=C42T0OBD3fjGoiDHZ1nYkcWO8GFV06Ka0eksNV0LYB8',
     },
+    {
+      date: 'February 2026 - Present',
+      title: 'Tech Content Writer',
+      company: 'Smartly Creators Program (GirlScript Foundation)',
+      description:
+        'Contributing as a tech content writer by creating clear, engaging, and beginner-friendly technical articles and documentation. Focused on simplifying complex computer science concepts and promoting tech awareness through structured and impactful content.',
+      skills: ['Technical Writing', 'Content Creation', 'Computer Science Fundamentals'],
+      imageUrl:
+        'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1771739279/images_v3ov9v.png  ',
+    },
   ];
 
   return (
