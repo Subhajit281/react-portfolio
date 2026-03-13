@@ -1,13 +1,13 @@
 @import "tailwindcss";
 
-#home,#projects,#experience,#contact,#skills,#education,.footer{
+#home,#projects,#experience,#contact,#skills,#education,#coding,.footer{
    background-image: url('https://res.cloudinary.com/dyxbvlzcl/image/upload/v1765736927/blue1_1_owzh8y_imgupscaler.ai_v1_Fast__2K_kcyfxi.jpg');  
 
   width:100vw;
-  background-size: cover;                  /* Make the image cover the entire area */
-  background-position: center;        /* Center the image */
-   background-attachment:fixed;            /*  Fix the background so it doesn't scroll */
-  background-repeat: no-repeat;              /* Prevent the image from tiling */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 @keyframes spin-slow {
@@ -21,27 +21,20 @@
 }
 
 .spin-slow {
-  animation: spin-sow 8s linear infinite;
+  animation: spin-slow 8s linear infinite;
 }
 
 .floaty {
   animation: floaty 2s ease-in-out infinite;
 }
-/* ✨ ADD THIS NEW ANIMATION FOR THE GRADIENT BORDER */
+
 @keyframes gradient-pan {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .animated-gradient-border {
   background-size: 200% 200%;
   animation: gradient-pan 4s ease-in-out infinite;
 }
-

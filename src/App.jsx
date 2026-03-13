@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
@@ -10,6 +11,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Preloader from './components/preLoader'; //  preloader component
 import Chatbot from './components/Chatbot';
+import CodingActivity from "./components/CodingActivity";
 
 const App = () => {
   // 1. Create a state to manage the loading status
@@ -41,7 +43,9 @@ const App = () => {
         >
           <Navbar />
           <Hero />
+          <CodingActivity />
           <Skills />
+          
           <Experience />
           <Projects />
           <Education />
