@@ -2,24 +2,47 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./portfolio-logo3.png" />
+
+    <!-- Fixed favicon -->
+    <link rel="icon" type="image/png" href="/portfolio-logo3.png" />
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Subhajit</title>
-    
-    <!-- 
-      
-      This style tag targets html, body, AND the #root div,
-      and uses !important to guarantee a black background on initial load.
-    -->
+
+    <!-- SEO TITLE -->
+    <title>Subhajit Sarkar | Web Developer | MERN Stack Developer</title>
+
+    <!-- SEO META -->
+    <meta name="description" content="Subhajit Sarkar is a web developer skilled in MERN stack, React, Node.js, and JavaScript. Passionate about building scalable web applications and solving problems using DSA." />
+
+    <meta name="keywords" content="Subhajit Sarkar, Web Developer, MERN Stack Developer, React Developer, Node.js, JavaScript, Portfolio, NIT Silchar" />
+
+    <meta name="author" content="Subhajit Sarkar" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Subhajit Sarkar Portfolio" />
+    <meta property="og:description" content="Web Developer | MERN Stack | React & Node.js" />
+    <meta property="og:image" content="/portfolio-logo3.png" />
+    <meta property="og:type" content="website" />
+
+    <!-- Background fix -->
     <style>
       html, body, #root {
         background-color: #000000 !important;
+        margin: 0;
+        padding: 0;
       }
     </style>
   </head>
+
   <body>
+
+    <!-- SEO fallback for React -->
+    <noscript>
+      <h1>Subhajit Sarkar</h1>
+      <p>Web Developer | MERN Stack Developer | React & Node.js</p>
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
-
