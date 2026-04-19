@@ -3,7 +3,7 @@
 #home,#projects,#experience,#contact,#skills,#education,#coding,.footer{
    background-image: url('https://res.cloudinary.com/dyxbvlzcl/image/upload/v1765736927/blue1_1_owzh8y_imgupscaler.ai_v1_Fast__2K_kcyfxi.jpg');  
 
-  width:100vw;
+  width:100%;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
