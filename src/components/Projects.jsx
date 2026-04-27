@@ -25,9 +25,9 @@ const Projects = () => {
     },
     {
       title: '2D Physics Simulator',
-      description: 'A real-time executable 2D physics simulator for exploring motion, forces, and interactions through interactive experiments. Visualize collisions, gravity, and waves with dynamic, hands-on simulations.',
+      description: 'A real-time executable 2D physics simulator for exploring motion, forces, and interactions through interactive visuals and hands-on simulations.',
       imageUrl: 'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1777277718/Screenshot_2026-04-27_134913_aividh.png',
-      tags: ['C++','Javascript', 'SFML',"ReactJS","NodeJS", "CMake" ,"ELectron"],
+      tags: ['C++','Javascript', 'SFML',"ReactJS","NodeJS", "CMake" ,"Electron"],
       githubUrl: 'https://github.com/Subhajit281/PhysicsSimulator.git',
       liveUrl: '#',
     },
