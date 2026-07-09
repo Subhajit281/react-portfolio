@@ -34,7 +34,7 @@ const Experience = () => {
         'https://media.licdn.com/dms/image/v2/C4D0BAQGdVxGBlcBALw/company-logo_200_200/company-logo_200_200/0/1674410109310?e=2147483647&v=beta&t=C42T0OBD3fjGoiDHZ1nYkcWO8GFV06Ka0eksNV0LYB8',
     },
     {
-      date: 'February 2026 - Present',
+      date: 'February 2026 - May 2026',
       title: 'Tech Content Writer',
       company: 'Smartly Creators Program (GirlScript Foundation)',
       description:

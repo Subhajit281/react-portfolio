@@ -72,7 +72,7 @@ const Hero = () => {
                     </p>
 
                     <a
-                        href="/AndrewResumeWorkshop (3).pdf"
+                        href="/Subhajit(9726).pdf"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Open Subhajit Sarkar Web Developer Resume"
