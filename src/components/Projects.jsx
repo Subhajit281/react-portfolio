@@ -219,7 +219,7 @@ const Projects = () => {
                         <img
                           src={project.imageUrl}
                           alt={project.title}
-                          className="w-full h-50 object-fit"
+                          className="w-full h-50 object-cover"
                           draggable="false"
                         />
                         <div className="absolute top-4 right-4 flex gap-3">
