@@ -10,7 +10,7 @@ import { skillsData, experienceData } from '../portfolioData';
 // Config
 // ---------------------------------------------------------------------------
 
-const API_URL = 'https://router.huggingface.co/v1/chat/completions';
+const API_URL ="https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
 const MODEL = 'inclusionAI/Ling-1T:featherless-ai';
 const MAX_HISTORY_MESSAGES = 10; // last N conversation messages sent for context
 const MAX_RETRIES = 3;
