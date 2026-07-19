@@ -10,12 +10,12 @@ import { skillsData, experienceData } from '../portfolioData';
 // Config
 // ---------------------------------------------------------------------------
 
-const API_URL ="https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent";
-const MODEL = 'inclusionAI/Ling-1T:featherless-ai';
+const GEMINI_MODEL = 'gemini-2.5-flash';
+const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 const MAX_HISTORY_MESSAGES = 10; // last N conversation messages sent for context
 const MAX_RETRIES = 3;
 const BASE_RETRY_DELAY_MS = 1000; // 1s -> 2s -> 4s
-const RETRYABLE_STATUS_CODES = new Set([429, 503]);
+const RETRYABLE_STATUS_CODES = new Set([429]);
 
 const INITIAL_MESSAGE = {
   id: 'welcome-message',
@@ -24,7 +24,7 @@ const INITIAL_MESSAGE = {
 };
 
 // ---------------------------------------------------------------------------
-// Helpers
+// Helpers - Portfolio context & prompt building
 // ---------------------------------------------------------------------------
 
 /** Builds a readable context block describing skills & experience. */
@@ -71,22 +71,28 @@ Context:
 ${portfolioContext}`;
 }
 
+// ---------------------------------------------------------------------------
+// Helpers - Gemini request/response shaping
+// ---------------------------------------------------------------------------
+
+/**
+ * Converts our internal UI message shape into Gemini's `contents` format.
+ * Gemini uses "user" / "model" roles (not "assistant"), and each turn's
+ * text lives inside a `parts` array.
+ */
+function buildGeminiContents(uiMessages) {
+  return uiMessages.slice(-MAX_HISTORY_MESSAGES).map((msg) => ({
+    role: msg.sender === 'user' ? 'user' : 'model',
+    parts: [{ text: msg.text }],
+  }));
+}
+
 /** Generates a reasonably unique id for a chat message. */
 function generateMessageId() {
   if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
     return crypto.randomUUID();
   }
   return `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-}
-
-/** Converts our internal message shape into OpenAI-style chat messages. */
-function toApiMessages(uiMessages) {
-  return uiMessages
-    .slice(-MAX_HISTORY_MESSAGES)
-    .map((msg) => ({
-      role: msg.sender === 'user' ? 'user' : 'assistant',
-      content: msg.text,
-    }));
 }
 
 /** Simple sleep helper for backoff delays. */
@@ -97,6 +103,8 @@ function sleep(ms) {
 /** Maps an HTTP status code to a friendly, user-facing error message. */
 function friendlyErrorForStatus(status) {
   switch (status) {
+    case 400:
+      return "Sorry, that request didn't go through correctly. Please try rephrasing.";
     case 401:
     case 403:
       return "Sorry, I'm not authorized to respond right now. Please let Subhajit know.";
@@ -106,94 +114,9 @@ function friendlyErrorForStatus(status) {
       return "I'm getting a lot of requests right now. Please try again in a moment.";
     case 500:
       return 'Something went wrong on the server. Please try again shortly.';
-    case 503:
-      return 'The assistant is warming up. Please try again in a few seconds.';
     default:
       return "Sorry, I'm having trouble connecting right now.";
   }
-}
-
-/**
- * Calls the Hugging Face chat-completions endpoint with retry + exponential
- * backoff on transient failures (429, 503, network errors).
- *
- * @param {Array<{role: string, content: string}>} apiMessages
- * @returns {Promise<string>} the assistant's reply text
- */
-async function fetchAIResponse(apiMessages) {
-  const hfToken = import.meta.env.VITE_HF_API_TOKEN;
-
-  if (!hfToken) {
-    // Caller is responsible for surfacing this as a chat message.
-    throw new ConfigError('Missing API key.');
-  }
-
-  const payload = {
-    model: MODEL,
-    messages: apiMessages,
-  };
-
-  let attempt = 0;
-  let lastError = null;
-
-  while (attempt <= MAX_RETRIES) {
-    try {
-      const response = await fetch(API_URL, {
-        method: 'POST',
-        headers: {
-          Authorization: `Bearer ${hfToken}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(payload),
-      });
-
-      if (!response.ok) {
-        const bodyText = await safeReadBody(response);
-        console.error(
-          `HF API error (status ${response.status}):`,
-          bodyText || '<empty body>'
-        );
-
-        if (RETRYABLE_STATUS_CODES.has(response.status) && attempt < MAX_RETRIES) {
-          await sleep(BASE_RETRY_DELAY_MS * 2 ** attempt);
-          attempt += 1;
-          continue;
-        }
-
-        throw new ApiError(friendlyErrorForStatus(response.status), response.status);
-      }
-
-      const result = await response.json();
-      const aiText = result?.choices?.[0]?.message?.content;
-
-      if (!aiText) {
-        console.error('HF API returned an unexpected payload shape:', result);
-        throw new ApiError("Sorry, I couldn't get a valid response.");
-      }
-
-      return aiText.trim();
-    } catch (error) {
-      // Config/API errors we've already classified should propagate immediately.
-      if (error instanceof ConfigError || error instanceof ApiError) {
-        throw error;
-      }
-
-      // Anything else here is a network-level failure (fetch throws on network errors).
-      console.error('Network error while calling HF API:', error);
-      lastError = error;
-
-      if (attempt < MAX_RETRIES) {
-        await sleep(BASE_RETRY_DELAY_MS * 2 ** attempt);
-        attempt += 1;
-        continue;
-      }
-
-      throw new ApiError("Sorry, I'm having trouble connecting right now.");
-    }
-  }
-
-  // Should be unreachable, but keep a safe fallback.
-  throw new ApiError("Sorry, I'm having trouble connecting right now.", null, lastError);
 }
 
 async function safeReadBody(response) {
@@ -211,6 +134,105 @@ class ApiError extends Error {
     this.status = status;
     this.cause = cause;
   }
+}
+
+/**
+ * Calls the Gemini generateContent endpoint with retry + exponential
+ * backoff on transient failures (429, network errors).
+ *
+ * @param {Array<{role: string, parts: Array<{text: string}>}>} contents
+ * @returns {Promise<string>} the assistant's reply text
+ */
+async function fetchGeminiResponse(contents) {
+  const geminiApiKey = import.meta.env.VITE_GEMINI_API_KEY;
+
+  if (!geminiApiKey) {
+    // Caller is responsible for surfacing this as a chat message.
+    throw new ConfigError('Missing API key.');
+  }
+
+  const systemPrompt = buildSystemPrompt();
+
+  const payload = {
+    contents,
+    systemInstruction: {
+      parts: [{ text: systemPrompt }],
+    },
+  };
+
+  const requestUrl = `${GEMINI_API_URL}?key=${geminiApiKey}`;
+
+  let attempt = 0;
+  let lastError = null;
+
+  while (attempt <= MAX_RETRIES) {
+    try {
+      const response = await fetch(requestUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        const bodyText = await safeReadBody(response);
+        console.error(
+          `Gemini API error (status ${response.status}):`,
+          bodyText || '<empty body>'
+        );
+
+        if (RETRYABLE_STATUS_CODES.has(response.status) && attempt < MAX_RETRIES) {
+          await sleep(BASE_RETRY_DELAY_MS * 2 ** attempt);
+          attempt += 1;
+          continue;
+        }
+
+        throw new ApiError(friendlyErrorForStatus(response.status), response.status);
+      }
+
+      const result = await response.json();
+      const aiText = extractGeminiText(result);
+
+      if (!aiText) {
+        console.error('Gemini API returned an unexpected payload shape:', result);
+        throw new ApiError("Sorry, I couldn't get a valid response.");
+      }
+
+      return aiText.trim();
+    } catch (error) {
+      // Config/API errors we've already classified should propagate immediately.
+      if (error instanceof ConfigError || error instanceof ApiError) {
+        throw error;
+      }
+
+      // Anything else here is a network-level failure (fetch throws on network errors).
+      console.error('Network error while calling Gemini API:', error);
+      lastError = error;
+
+      if (attempt < MAX_RETRIES) {
+        await sleep(BASE_RETRY_DELAY_MS * 2 ** attempt);
+        attempt += 1;
+        continue;
+      }
+
+      throw new ApiError("Sorry, I'm having trouble connecting right now.", null, lastError);
+    }
+  }
+
+  // Should be unreachable, but keep a safe fallback.
+  throw new ApiError("Sorry, I'm having trouble connecting right now.", null, lastError);
+}
+
+/** Safely pulls the reply text out of a Gemini generateContent response. */
+function extractGeminiText(result) {
+  const candidate = result?.candidates?.[0];
+
+  // Gemini can return a candidate with no content if it was blocked by
+  // safety filters or hit an unusual finish reason — treat that as invalid.
+  const text = candidate?.content?.parts?.map((part) => part.text ?? '').join('');
+
+  return text && text.length > 0 ? text : null;
 }
 
 // ---------------------------------------------------------------------------
@@ -240,7 +262,7 @@ const Chatbot = () => {
 
   const handleSend = async () => {
     const trimmedInput = inputValue.trim();
-    if (trimmedInput === '' || isLoading) return;
+    if (trimmedInput === '' || isLoading) return; // guards against duplicate requests
 
     const userMessage = { id: generateMessageId(), sender: 'user', text: trimmedInput };
     const nextMessages = [...messages, userMessage];
@@ -250,13 +272,8 @@ const Chatbot = () => {
     setIsLoading(true);
 
     try {
-      const systemPrompt = buildSystemPrompt();
-      const apiMessages = [
-        { role: 'system', content: systemPrompt },
-        ...toApiMessages(nextMessages),
-      ];
-
-      const aiText = await fetchAIResponse(apiMessages);
+      const geminiContents = buildGeminiContents(nextMessages);
+      const aiText = await fetchGeminiResponse(geminiContents);
       appendMessage('ai', aiText);
     } catch (error) {
       if (error instanceof ConfigError) {
