@@ -10,7 +10,7 @@ import { skillsData, experienceData } from '../portfolioData';
 // Config
 // ---------------------------------------------------------------------------
 
-const GEMINI_MODEL = 'gemini-2.5-flash';
+const GEMINI_MODEL = "gemini-3.1-flash-lite";
 const GEMINI_API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${GEMINI_MODEL}:generateContent`;
 const MAX_HISTORY_MESSAGES = 10; // last N conversation messages sent for context
 const MAX_RETRIES = 3;
