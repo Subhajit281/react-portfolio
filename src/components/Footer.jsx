@@ -89,6 +89,7 @@ const Footer = () => {
     { name: 'Experience', href: '#experience' },
     { name: 'Projects', href: '#projects' },
     { name: 'Contact', href: '#contact' },
+    { name: 'Privacy Policy', href: '/privacy-policy' }
   ];
 
   return (

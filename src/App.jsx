@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
+import { Routes, Route } from 'react-router-dom';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
 import Skills from './components/Skills';
@@ -12,8 +13,9 @@ import Footer from './components/Footer';
 import Preloader from './components/preLoader'; //  preloader component
 import Chatbot from './components/Chatbot';
 import CodingActivity from "./components/CodingActivity";
+import PrivacyPolicy from './components/PrivacyPolicy';
 
-const App = () => {
+const HomePage = () => {
   // 1. Create a state to manage the loading status
   const [loading, setLoading] = useState(true);
 
@@ -41,16 +43,14 @@ const App = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8 }}
         >
-          <Navbar />
           <Hero />
           <CodingActivity />
           <Skills />
-          
+
           <Experience />
           <Projects />
           <Education />
           <Contact />
-          <Footer />
           <Chatbot />
         </motion.div>
       )}
@@ -58,5 +58,17 @@ const App = () => {
   );
 };
 
-export default App;
+const App = () => {
+  return (
+    <>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      </Routes>
+      <Footer />
+    </>
+  );
+};
 
+export default App;
