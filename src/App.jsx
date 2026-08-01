@@ -14,6 +14,7 @@ import Preloader from './components/preLoader'; //  preloader component
 import Chatbot from './components/Chatbot';
 import CodingActivity from "./components/CodingActivity";
 import PrivacyPolicy from './components/PrivacyPolicy';
+import ScrollToHash from "./components/ScrollToHash";
 
 const HomePage = () => {
   // 1. Create a state to manage the loading status
@@ -61,6 +62,7 @@ const HomePage = () => {
 const App = () => {
   return (
     <>
+      <ScrollToHash />
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
