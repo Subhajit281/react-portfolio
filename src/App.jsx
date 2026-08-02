@@ -15,6 +15,7 @@ import Chatbot from './components/Chatbot';
 import CodingActivity from "./components/CodingActivity";
 import PrivacyPolicy from './components/PrivacyPolicy';
 import ScrollToHash from "./components/ScrollToHash";
+import { blogRoutes } from "./routes/BlogRoutes";
 
 const HomePage = () => {
   // 1. Create a state to manage the loading status
@@ -67,6 +68,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        {blogRoutes}
       </Routes>
       <Footer />
     </>

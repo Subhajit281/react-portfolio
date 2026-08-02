@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { FaBars, FaTimes, FaCode } from "react-icons/fa";
+import { FaBars, FaTimes, FaCode, FaChevronDown } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa6";
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
+    const [blogDropdownOpen, setBlogDropdownOpen] = useState(false);
+    const [mobileBlogOpen, setMobileBlogOpen] = useState(false);
+    const dropdownRef = useRef(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -14,6 +17,22 @@ const Navbar = () => {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
+
+    // Close desktop dropdown when clicking outside
+    useEffect(() => {
+        const handleClickOutside = (e) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+                setBlogDropdownOpen(false);
+            }
+        };
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
+
+    const blogLinks = [
+        { to: "/blogs", label: "All Posts" },
+        { to: "/categories", label: "Categories" },
+    ];
 
     return (
         <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isOpen ? '' : 'p-4'}`}>
@@ -34,6 +53,36 @@ const Navbar = () => {
                     <Link to="/#skills" className="text-gray-300 hover:text-cyan-400 font-semibold transition-colors">Skills</Link>
                     <Link to="/#experience" className="text-gray-300 hover:text-cyan-400 font-semibold transition-colors">Experience</Link>
                     <Link to="/#education" className="text-gray-300 hover:text-cyan-400 font-semibold transition-colors">Education</Link>
+
+                    {/* Blogs dropdown */}
+                    <div className="relative" ref={dropdownRef}>
+                        <button
+                            onClick={() => setBlogDropdownOpen((prev) => !prev)}
+                            className="flex items-center gap-1 text-gray-300 hover:text-cyan-400 font-semibold transition-colors focus:outline-none"
+                        >
+                            Blogs
+                            <FaChevronDown
+                                size={12}
+                                className={`transition-transform duration-200 ${blogDropdownOpen ? 'rotate-180' : ''}`}
+                            />
+                        </button>
+
+                        {blogDropdownOpen && (
+                            <div className="absolute top-full left-1/2 -translate-x-1/2 mt-6 w-40 bg-gray-900/90 backdrop-blur-md border-b-2 border-cyan-400/70 rounded-md shadow-lg shadow-cyan-400/10 overflow-hidden">
+                                {blogLinks.map(({ to, label }) => (
+                                    <Link
+                                        key={to}
+                                        to={to}
+                                        onClick={() => setBlogDropdownOpen(false)}
+                                        className="block px-4 py-2 text-sm text-gray-300 hover:text-cyan-400 hover:bg-gray-800/60 transition-colors"
+                                    >
+                                        {label}
+                                    </Link>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+
                     <Link to="/#contact" className="text-gray-300 hover:text-cyan-400 font-semibold transition-colors">Contact Me</Link>
                 </div>
                 <div>
@@ -61,7 +110,36 @@ const Navbar = () => {
                 <Link to="/#skills" className="text-cyan-400 hover:text-white transition-colors block p-4 text-center" onClick={() => setIsOpen(false)}>Skills</Link>
                 <Link to="/#experience" className="text-cyan-400 hover:text-white transition-colors block p-4 text-center" onClick={() => setIsOpen(false)}>Experience</Link>
                 <Link to="/#education" className="text-cyan-400 hover:text-white transition-colors block p-4 text-center" onClick={() => setIsOpen(false)}>Education</Link>
-                <Link to="/#contact" className="text-cyan-400 hover:text-white transition-colors block p-4 text-center" onClick={() => setIsOpen(false)}>Contact me</Link>
+
+                {/* Mobile Blogs dropdown */}
+                <div className="border-t border-gray-600">
+                    <button
+                        onClick={() => setMobileBlogOpen((prev) => !prev)}
+                        className="w-full flex items-center justify-center gap-2 text-cyan-400 hover:text-white transition-colors p-4"
+                    >
+                        Blogs
+                        <FaChevronDown
+                            size={12}
+                            className={`transition-transform duration-200 ${mobileBlogOpen ? 'rotate-180' : ''}`}
+                        />
+                    </button>
+                    {mobileBlogOpen && (
+                        <div className="bg-gray-800/60">
+                            {blogLinks.map(({ to, label }) => (
+                                <Link
+                                    key={to}
+                                    to={to}
+                                    className="block p-3 text-center text-sm text-gray-300 hover:text-cyan-400 transition-colors"
+                                    onClick={() => { setIsOpen(false); setMobileBlogOpen(false); }}
+                                >
+                                    {label}
+                                </Link>
+                            ))}
+                        </div>
+                    )}
+                </div>
+
+                <Link to="/#contact" className="text-cyan-400 hover:text-white transition-colors block p-4 text-center border-t border-gray-600" onClick={() => setIsOpen(false)}>Contact me</Link>
                 <a href="https://github.com/Subhajit281" target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-white transition-colors block p-4 text-center border-t border-gray-600"> 
                    <span>GitHub</span>
                 </a>
