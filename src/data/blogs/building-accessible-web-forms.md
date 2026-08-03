@@ -6,7 +6,7 @@ author: Subhajit Sarkar
 date: 2026-01-12
 category: Frontend
 tags: [Accessibility, Forms, HTML]
-coverImage: /blog-covers/building-accessible-web-forms.jpg
+coverImage: https://res.cloudinary.com/dyxbvlzcl/image/upload/v1785740999/fff7070f-68d9-45af-b4ed-f9007f956528_apowln.png
 keywords: [web accessibility, accessible forms, aria, a11y]
 featured: false
 ---

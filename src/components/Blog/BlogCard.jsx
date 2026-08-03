@@ -37,9 +37,9 @@ export default function BlogCard({ post, variant = "default" }) {
   return (
     <Link
       to={`/blogs/${post.slug}`}
-      className="group flex flex-col rounded-xl border-b border-cyan-400/70 overflow-hidden bg-white/40 dark:bg-gray-900/40 backdrop-blur-md hover:shadow-lg hover:shadow-cyan-400/10 dark:hover:shadow-none dark:hover:border-cyan-400 transition-all"
+      className="group flex flex-col rounded-xl border-b border-cyan-400/70 overflow-hidden bg-white/40 dark:bg-gray-900/40 backdrop-blur-md hover:shadow-lg hover:shadow-cyan-400/10 dark:hover:shadow-none dark:hover:border-cyan-400 transition-all mb-5"
     >
-      <div className="aspect-video bg-gray-100 dark:bg-gray-800 overflow-hidden">
+      {/* <div className="aspect-video bg-gray-100 dark:bg-gray-800 overflow-hidden">
         <img
           src={post.coverImage}
           alt={post.title}
@@ -47,7 +47,7 @@ export default function BlogCard({ post, variant = "default" }) {
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           onError={(e) => (e.currentTarget.style.visibility = "hidden")}
         />
-      </div>
+      </div> */}
       <div className="flex flex-col flex-1 p-5">
         <span className="text-xs font-semibold text-cyan-500 dark:text-cyan-400 uppercase tracking-wide">
           {post.category}
