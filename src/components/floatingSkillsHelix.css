@@ -115,7 +115,7 @@
   .skill-helix { display: none; }
   .skill-helix__cube { animation: none; }
 }
-@media (max-width: 640px) {
+/* @media (max-width: 640px) {
   .skill-helix {
     inset: 0 0 auto;
     height: 100svh;
@@ -142,4 +142,4 @@
     max-width: 46px;
     font-size: 8px;
   }
-}
+} */
