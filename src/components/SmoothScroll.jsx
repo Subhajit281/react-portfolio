@@ -1,79 +1,47 @@
-import React, { useState, useEffect } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence } from 'framer-motion';
-import { Routes, Route } from 'react-router-dom';
-import Hero from './Hero';
-import Navbar from './Navbar';
-import Skills from './Skills';
-import Experience from './Experience';
-import Projects from './Projects';
-import Education from './Education';
-import Contact from './Contact';
-import Footer from './Footer';
-import Preloader from './preLoader'; //  preloader component
-import Chatbot from './Chatbot';
-import CodingActivity from "./CodingActivity";
-import PrivacyPolicy from './PrivacyPolicy';
-import ScrollToHash from "./ScrollToHash";
-import SmoothScroll from './SmoothScroll';
-import { blogRoutes } from "../routes/BlogRoutes";
+import { useEffect } from 'react';
+import Lenis from 'lenis';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-const HomePage = () => {
-  // 1. Create a state to manage the loading status
-  const [loading, setLoading] = useState(true);
+gsap.registerPlugin(ScrollTrigger);
 
+/**
+ * Wrap your app (or at least the parts that contain pinned
+ * ScrollTrigger sections, like <Projects />) with this component.
+ *
+ *   <SmoothScroll>
+ *     <App />
+ *   </SmoothScroll>
+ *
+ * It drives Lenis off GSAP's own ticker so Lenis's scroll values and
+ * ScrollTrigger's pin/scrub calculations always agree — without this
+ * sync, pinned sections can jitter or drift out of place.
+ */
+export default function SmoothScroll({ children }) {
   useEffect(() => {
-    // 2. Set a timer to hide the preloader after a delay
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000); // 3 seconds. can change this duration.
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 2,
+    });
 
-    // Cleanup the timer
-    return () => clearTimeout(timer);
+    // Keep ScrollTrigger in sync with Lenis's scroll position
+    lenis.on('scroll', ScrollTrigger.update);
+
+    // Drive Lenis's rAF loop from GSAP's ticker instead of its own
+    // requestAnimationFrame, so both stay perfectly in step
+    const update = (time) => {
+      lenis.raf(time * 1000);
+    };
+    gsap.ticker.add(update);
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      gsap.ticker.remove(update);
+      lenis.destroy();
+    };
   }, []);
 
-  return (
-    <>
-      {/* 3.  component that allows the preloader to have an exit animation */}
-      <AnimatePresence>
-        {loading && <Preloader />}
-      </AnimatePresence>
-
-      {/* 4.conditionally renders portfolio content only when loading is false */}
-      {!loading && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8 }}
-        >
-          <Hero />
-          <CodingActivity />
-          <Skills />
-
-          <Experience />
-          <Projects />
-          <Education />
-          <Contact />
-          <Chatbot />
-        </motion.div>
-      )}
-    </>
-  );
-};
-
-const App = () => {
-  return (
-    <SmoothScroll>
-      <ScrollToHash />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-        {blogRoutes}
-      </Routes>
-      <Footer />
-    </SmoothScroll>
-  );
-};
-
-export default App;
+  return children;
+}
