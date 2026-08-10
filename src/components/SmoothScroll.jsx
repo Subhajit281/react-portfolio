@@ -2,21 +2,21 @@ import React, { useState, useEffect } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
 import { Routes, Route } from 'react-router-dom';
-import Hero from './components/Hero';
-import Navbar from './components/Navbar';
-import Skills from './components/Skills';
-import Experience from './components/Experience';
-import Projects from './components/Projects';
-import Education from './components/Education';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import Preloader from './components/preLoader'; //  preloader component
-import Chatbot from './components/Chatbot';
-import CodingActivity from "./components/CodingActivity";
-import PrivacyPolicy from './components/PrivacyPolicy';
-import ScrollToHash from "./components/ScrollToHash";
-import SmoothScroll from './components/SmoothScroll';
-import { blogRoutes } from "./routes/BlogRoutes";
+import Hero from './Hero';
+import Navbar from './Navbar';
+import Skills from './Skills';
+import Experience from './Experience';
+import Projects from './Projects';
+import Education from './Education';
+import Contact from './Contact';
+import Footer from './Footer';
+import Preloader from './preLoader'; //  preloader component
+import Chatbot from './Chatbot';
+import CodingActivity from "./CodingActivity";
+import PrivacyPolicy from './PrivacyPolicy';
+import ScrollToHash from "./ScrollToHash";
+import SmoothScroll from './SmoothScroll';
+import { blogRoutes } from "../routes/BlogRoutes";
 
 const HomePage = () => {
   // 1. Create a state to manage the loading status
