@@ -1,4 +1,4 @@
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import "./floatingSkillsHelix.css";
 
 // Replace or extend this list with your own skills. `icon` accepts any image URL.
@@ -43,28 +43,28 @@ const mod = (value, divisor) => ((value % divisor) + divisor) % divisor;
 function SkillCube({ skill, index, progress, total }) {
   // `progress` is deliberately allowed to move the cubes past either edge.
   // That makes down-scroll travel top -> bottom, and up-scroll bottom -> top.
-  const transform = useTransform(progress, (value) => {
-    const lane = mod(index / total + value * 1.6, 1);
-    const turns = 1.5;
-    const angle = lane * Math.PI * 2 * turns + index * 0.31;
-    const wave = Math.sin(angle);
-    const depth = Math.cos(angle);
+const transform = useTransform(progress, (value) => {
+  const lane = mod(index / total + value * 1.6, 1);
+  const angle = lane * Math.PI * 2 * 1.5 + index * 0.31;
+  const wave = Math.sin(angle);
+  const depth = Math.cos(angle);
 
-    const x = 50 + wave * 38 + Math.sin(angle * 0.5) * 5;
-    const y = lane * 124 - 12;
-    const z = depth * 135;
-    const scale = 0.58 + ((depth + 1) / 2) * 0.52;
-    const rotateY = -angle * (180 / Math.PI) + 18;
-    const rotateX = 14 + depth * 18;
+  const x = 50 + wave * 38 + Math.sin(angle * 0.5) * 5;
+  const y = lane * 124 - 12;
+  const z = depth * 135;
+  const scale = 0.58 + ((depth + 1) / 2) * 0.52;
+  const rotateY = -angle * (180 / Math.PI) + 18;
+  const rotateX = 14 + depth * 18;
 
-    return `translate3d(calc(${x}vw - 50%), ${y}vh, ${z}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
-  });
+  return `translate3d(calc(${x}vw - 50%), ${y}svh, ${z}px)
+    rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+});
 
-  const opacity = useTransform(progress, (value) => {
-    const lane = mod(index / total + value * 1.6, 1);
-    return Math.min(0.94, Math.max(0, lane * 9, (1 - lane) * 9));
-  });
+const opacity = useTransform(progress, (value) => {
+  const lane = mod(index / total + value * 1.6, 1);
 
+  return Math.max(0, Math.min(0.94, lane * 9, (1 - lane) * 9));
+});
   return (
     <motion.article
       className="skill-helix__cube-wrap"
@@ -86,25 +86,23 @@ function SkillCube({ skill, index, progress, total }) {
   );
 }
 
+
+
 export default function FloatingSkillsHelix() {
   const { scrollYProgress } = useScroll();
-  const progress = useSpring(scrollYProgress, {
-    stiffness: 85,
-    damping: 24,
-    mass: 0.35,
-  });
 
   return (
     <aside className="skill-helix" aria-hidden="true">
       <div className="skill-helix__glow skill-helix__glow--one" />
       <div className="skill-helix__glow skill-helix__glow--two" />
+
       {skills.map((skill, index) => (
         <SkillCube
           key={skill.name}
           skill={skill}
           index={index}
           total={skills.length}
-          progress={progress}
+          progress={scrollYProgress}
         />
       ))}
     </aside>
