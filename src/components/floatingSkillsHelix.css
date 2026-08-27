@@ -115,12 +115,12 @@
   .skill-helix { display: none; }
   .skill-helix__cube { animation: none; }
 }
-/* @media (max-width: 640px) {
-  .skill-helix {
+@media (max-width: 640px) {
+  /* .skill-helix {
     inset: 0 0 auto;
     height: 100svh;
     perspective: 800px;
-  }
+  } */
 
   .skill-helix__cube-wrap {
     filter: none;
@@ -132,7 +132,7 @@
     animation: none;
   }
 
-  .skill-helix__face--front img {
+  /* .skill-helix__face--front img {
     width: 22px;
     height: 22px;
     filter: brightness(1.25) saturate(1.15);
@@ -141,5 +141,5 @@
   .skill-helix__face--front span {
     max-width: 46px;
     font-size: 8px;
-  }
-} */
+  } */
+}
