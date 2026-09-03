@@ -1,5 +1,25 @@
+import { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import "./floatingSkillsHelix.css";
+
+// Cubes only render on screens wider than this. Below it we skip the
+// scroll-linked transform math entirely instead of just hiding it with CSS.
+const MOBILE_BREAKPOINT = "(max-width: 640px)";
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== "undefined" && window.matchMedia(MOBILE_BREAKPOINT).matches
+  );
+
+  useEffect(() => {
+    const mql = window.matchMedia(MOBILE_BREAKPOINT);
+    const handleChange = (e) => setIsMobile(e.matches);
+    mql.addEventListener("change", handleChange);
+    return () => mql.removeEventListener("change", handleChange);
+  }, []);
+
+  return isMobile;
+}
 
 // Replace or extend this list with your own skills. `icon` accepts any image URL.
 const skills = [
@@ -90,6 +110,14 @@ const opacity = useTransform(progress, (value) => {
 
 export default function FloatingSkillsHelix() {
   const { scrollYProgress } = useScroll();
+  const isMobile = useIsMobile();
+
+  // Mobile: just the plain black backdrop, no cubes, no glow blur.
+  // This avoids running useTransform's trig math for every cube on
+  // every scroll frame, which is what was causing the scroll jank.
+  if (isMobile) {
+    return <aside className="skill-helix skill-helix--mobile" aria-hidden="true" />;
+  }
 
   return (
     <aside className="skill-helix" aria-hidden="true">

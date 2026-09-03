@@ -16,6 +16,7 @@ import CodingActivity from "./components/CodingActivity";
 import PrivacyPolicy from "./components/PrivacyPolicy";
 import ScrollToHash from "./components/ScrollToHash";
 import SmoothScroll from "./components/SmoothScroll";
+import Certifications from "./components/Certifications/Certifications";
 
 import FloatingSkillsHelix from "./components/FloatingSkillsHelix";
 
@@ -63,6 +64,8 @@ const HomePage = () => {
           <Experience />
 
           <Projects />
+
+          <Certifications />
 
           <Education />
 

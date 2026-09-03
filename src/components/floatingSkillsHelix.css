@@ -1,4 +1,5 @@
 /* Fixed overlay: no layout shift, no blocked clicks, and GPU-friendly transforms only. */
+
 .skill-helix {
   position: fixed;
   inset: 0;
@@ -24,10 +25,13 @@
 .skill-helix__cube {
   --cube-size: 78px;
   --half-cube: calc(var(--cube-size) / 2);
+
   position: relative;
   width: var(--cube-size);
   height: var(--cube-size);
   transform-style: preserve-3d;
+
+  /* Animation ONLY on laptop/desktop */
   animation: skill-cube-breathe 3.2s ease-in-out infinite;
 }
 
@@ -36,31 +40,47 @@
   display: grid;
   place-items: center;
   box-sizing: border-box;
+
   width: var(--cube-size);
   height: var(--cube-size);
+
   backface-visibility: visible;
+
   border: 1px solid rgb(148 163 184 / 0.52);
-  border-radius:3px;
+  border-radius: 3px;
+
   background:
-    linear-gradient(135deg, rgba(1, 1, 1, 0.88), rgb(15 23 42 / 0.68)),
-    radial-gradient(circle at 25% 20%, rgb(125 211 252 / 0.35), transparent 52%);
+    linear-gradient(
+      135deg,
+      rgba(1, 1, 1, 0.88),
+      rgb(15 23 42 / 0.68)
+    ),
+    radial-gradient(
+      circle at 25% 20%,
+      rgb(125 211 252 / 0.35),
+      transparent 52%
+    );
+
   box-shadow: inset 0 0 24px rgba(16, 171, 243, 0.13);
 }
 
 .skill-helix__face--front {
   gap: 5px;
   align-content: center;
+
   transform: translateZ(var(--half-cube));
+
   color: #e0e1e3;
   text-align: center;
+
   text-shadow: 0 1px 5px rgba(10, 14, 24, 0.85);
 }
 
 .skill-helix__face--front img {
   width: 31px;
   height: 31px;
-  object-fit: contain;
 
+  object-fit: contain;
   opacity: 1;
 
   filter:
@@ -72,74 +92,90 @@
 
 .skill-helix__face--front span {
   max-width: 68px;
+
   overflow: hidden;
+
   font-size: 10px;
   font-weight: 700;
   line-height: 1;
+
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.skill-helix__face--back { transform: rotateY(180deg) translateZ(var(--half-cube)); }
-.skill-helix__face--right { transform: rotateY(90deg) translateZ(var(--half-cube)); }
-.skill-helix__face--left { transform: rotateY(-90deg) translateZ(var(--half-cube)); }
-.skill-helix__face--top { transform: rotateX(90deg) translateZ(var(--half-cube)); }
-.skill-helix__face--bottom { transform: rotateX(-90deg) translateZ(var(--half-cube)); }
+.skill-helix__face--back {
+  transform: rotateY(180deg) translateZ(var(--half-cube));
+}
+
+.skill-helix__face--right {
+  transform: rotateY(90deg) translateZ(var(--half-cube));
+}
+
+.skill-helix__face--left {
+  transform: rotateY(-90deg) translateZ(var(--half-cube));
+}
+
+.skill-helix__face--top {
+  transform: rotateX(90deg) translateZ(var(--half-cube));
+}
+
+.skill-helix__face--bottom {
+  transform: rotateX(-90deg) translateZ(var(--half-cube));
+}
 
 .skill-helix__glow {
   position: absolute;
+
   width: 38vw;
   height: 38vw;
+
   border-radius: 999px;
+
   filter: blur(70px);
   opacity: 0.15;
   mix-blend-mode: screen;
 }
 
-.skill-helix__glow--one { top: 6%; left: -18%; background: #0284c7; }
-.skill-helix__glow--two { right: -18%; bottom: 12%; background: #7c3aed; }
+.skill-helix__glow--one {
+  top: 6%;
+  left: -18%;
+  background: #0284c7;
+}
 
+.skill-helix__glow--two {
+  right: -18%;
+  bottom: 12%;
+  background: #7c3aed;
+}
+
+/* Desktop / Laptop animation */
 @keyframes skill-cube-breathe {
-  0%, 100% { filter: brightness(1.); }
-  50% { filter: brightness(1.18); }
-}
-
-@media (max-width: 640px) {
-  .skill-helix__cube { --cube-size: 52px; }
-  .skill-helix__cube-wrap { width: 52px; height: 52px; }
-  .skill-helix__face--front img { width: 22px; height: 22px; }
-  .skill-helix__face--front span { max-width: 46px; font-size: 8px; }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .skill-helix { display: none; }
-  .skill-helix__cube { animation: none; }
-}
-@media (max-width: 640px) {
-  /* .skill-helix {
-    inset: 0 0 auto;
-    height: 100svh;
-    perspective: 800px;
-  } */
-
-  .skill-helix__cube-wrap {
-    filter: none;
-    will-change: auto;
+  0%,
+  100% {
+    filter: brightness(1);
   }
 
+  50% {
+    filter: brightness(1.18);
+  }
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+/* The React component itself skips rendering any cubes/glows below
+   640px and renders this plain variant instead — so this just needs
+   to paint the black backdrop with nothing expensive. */
+.skill-helix--mobile {
+  background: #000;
+}
+
+
+/* Respect user's reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
   .skill-helix__cube {
-    --cube-size: 52px;
     animation: none;
   }
-
-  /* .skill-helix__face--front img {
-    width: 22px;
-    height: 22px;
-    filter: brightness(1.25) saturate(1.15);
-  }
-
-  .skill-helix__face--front span {
-    max-width: 46px;
-    font-size: 8px;
-  } */
 }

@@ -24,6 +24,13 @@
 .floaty {
   animation: floaty 2s ease-in-out infinite;
 }
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
 
 @keyframes gradient-pan {
   0% { background-position: 0% 50%; }
