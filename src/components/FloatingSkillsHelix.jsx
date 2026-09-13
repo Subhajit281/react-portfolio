@@ -1,25 +1,6 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import "./floatingSkillsHelix.css";
-
-// Cubes only render on screens wider than this. Below it we skip the
-// scroll-linked transform math entirely instead of just hiding it with CSS.
-const MOBILE_BREAKPOINT = "(max-width: 640px)";
-
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(
-    () => typeof window !== "undefined" && window.matchMedia(MOBILE_BREAKPOINT).matches
-  );
-
-  useEffect(() => {
-    const mql = window.matchMedia(MOBILE_BREAKPOINT);
-    const handleChange = (e) => setIsMobile(e.matches);
-    mql.addEventListener("change", handleChange);
-    return () => mql.removeEventListener("change", handleChange);
-  }, []);
-
-  return isMobile;
-}
 
 // Replace or extend this list with your own skills. `icon` accepts any image URL.
 const skills = [
@@ -34,7 +15,6 @@ const skills = [
   { name: "Git", icon: "https://cdn.simpleicons.org/git/F05032" },
   { name: "GitHub", icon: "https://cdn.simpleicons.org/github/FFFFFF" },
   { name: "Docker", icon: "https://cdn.simpleicons.org/docker/2496ED" },
- // { name: "AWS", icon: "https://cdn.simpleicons.org/amazonaws/FF9900" },
   { name: "Firebase", icon: "https://cdn.simpleicons.org/firebase/FFCA28" },
   { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb/47A248" },
   { name: "Postgres", icon: "https://cdn.simpleicons.org/postgresql/4169E1" },
@@ -45,17 +25,10 @@ const skills = [
   { name: "Vite", icon: "https://cdn.simpleicons.org/vite/646CFF" },
   { name: "Linux", icon: "https://cdn.simpleicons.org/linux/FCC624" },
   { name: "Kubernetes", icon: "https://cdn.simpleicons.org/kubernetes/326CE5" },
- // { name: "TensorFlow", icon: "https://cdn.simpleicons.org/tensorflow/FF6F00" },
   { name: "OpenAI", icon: "https://cdn.simpleicons.org/openai/FFFFFF" },
- //{ name: "Three.js", icon: "https://cdn.simpleicons.org/threedotjs/FFFFFF" },
-//  { name: "Sass", icon: "https://cdn.simpleicons.org/sass/CC6699" },
-//{ name: "Jest", icon: "https://cdn.simpleicons.org/jest/C21325" },
- // { name: "Webflow", icon: "https://cdn.simpleicons.org/webflow/146EF5" },
- { name: "C++", icon: "https://cdn.simpleicons.org/cplusplus/00599C" },
-
-{ name: "Express", icon: "https://cdn.simpleicons.org/express/FFFFFF" },
-
-{ name: "Prisma", icon: "https://cdn.simpleicons.org/prisma/FFFFFF" },
+  { name: "C++", icon: "https://cdn.simpleicons.org/cplusplus/00599C" },
+  { name: "Express", icon: "https://cdn.simpleicons.org/express/FFFFFF" },
+  { name: "Prisma", icon: "https://cdn.simpleicons.org/prisma/FFFFFF" },
 ];
 
 const mod = (value, divisor) => ((value % divisor) + divisor) % divisor;
@@ -63,28 +36,29 @@ const mod = (value, divisor) => ((value % divisor) + divisor) % divisor;
 function SkillCube({ skill, index, progress, total }) {
   // `progress` is deliberately allowed to move the cubes past either edge.
   // That makes down-scroll travel top -> bottom, and up-scroll bottom -> top.
-const transform = useTransform(progress, (value) => {
-  const lane = mod(index / total + value * 1.6, 1);
-  const angle = lane * Math.PI * 2 * 1.5 + index * 0.31;
-  const wave = Math.sin(angle);
-  const depth = Math.cos(angle);
+  const transform = useTransform(progress, (value) => {
+    const lane = mod(index / total + value * 1.6, 1);
+    const angle = lane * Math.PI * 2 * 1.5 + index * 0.31;
+    const wave = Math.sin(angle);
+    const depth = Math.cos(angle);
 
-  const x = 50 + wave * 38 + Math.sin(angle * 0.5) * 5;
-  const y = lane * 124 - 12;
-  const z = depth * 135;
-  const scale = 0.58 + ((depth + 1) / 2) * 0.52;
-  const rotateY = -angle * (180 / Math.PI) + 18;
-  const rotateX = 14 + depth * 18;
+    const x = 50 + wave * 38 + Math.sin(angle * 0.5) * 5;
+    const y = lane * 124 - 12;
+    const z = depth * 135;
+    const scale = 0.58 + ((depth + 1) / 2) * 0.52;
+    const rotateY = -angle * (180 / Math.PI) + 18;
+    const rotateX = 14 + depth * 18;
 
-  return `translate3d(calc(${x}vw - 50%), ${y}svh, ${z}px)
-    rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
-});
+    return `translate3d(calc(${x}vw - 50%), ${y}svh, ${z}px)
+      rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${scale})`;
+  });
 
-const opacity = useTransform(progress, (value) => {
-  const lane = mod(index / total + value * 1.6, 1);
+  const opacity = useTransform(progress, (value) => {
+    const lane = mod(index / total + value * 1.6, 1);
 
-  return Math.max(0, Math.min(0.94, lane * 9, (1 - lane) * 9));
-});
+    return Math.max(0, Math.min(0.94, lane * 9, (1 - lane) * 9));
+  });
+
   return (
     <motion.article
       className="skill-helix__cube-wrap"
@@ -106,17 +80,14 @@ const opacity = useTransform(progress, (value) => {
   );
 }
 
-
-
-export default function FloatingSkillsHelix() {
+/**
+ * Isolated desktop content:
+ * Contains useScroll() and all 3D cube math.
+ * Only mounted when isDesktop is true, guaranteeing zero scroll listeners
+ * and zero 3D calculations on mobile and touch devices.
+ */
+function HelixDesktopContent() {
   const { scrollYProgress } = useScroll();
-  const isMobile = useIsMobile();
-
-  // Mobile: return null so DynamicBackground provides smooth atmospheric visuals
-  // with zero JS scroll computation overhead on touch devices.
-  if (isMobile) {
-    return null;
-  }
 
   return (
     <aside className="skill-helix" aria-hidden="true">
@@ -134,4 +105,29 @@ export default function FloatingSkillsHelix() {
       ))}
     </aside>
   );
+}
+
+/**
+ * FloatingSkillsHelix
+ * Preserves the full signature 3D helix animation on desktop screens (>=1024px with fine pointer),
+ * while completely bypassing mounting on mobile viewports for silky smooth native scrolling.
+ */
+export default function FloatingSkillsHelix() {
+  const [isDesktop, setIsDesktop] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(min-width: 1024px) and (pointer: fine)").matches;
+  });
+
+  useEffect(() => {
+    const mql = window.matchMedia("(min-width: 1024px) and (pointer: fine)");
+    const handleChange = (e) => setIsDesktop(e.matches);
+    mql.addEventListener("change", handleChange);
+    return () => mql.removeEventListener("change", handleChange);
+  }, []);
+
+  if (!isDesktop) {
+    return null;
+  }
+
+  return <HelixDesktopContent />;
 }

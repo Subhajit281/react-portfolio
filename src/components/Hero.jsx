@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import myProfilePic from '../assets/Subhajit11 (2).png';
 import Lottie from "lottie-react";
@@ -11,21 +11,35 @@ import { FaTerminal } from 'react-icons/fa';
 const techBadges = ['React.js', 'Node.js', 'MongoDB', 'PostgreSQL', 'C++', 'Docker'];
 
 const Hero = () => {
+    const [isDesktop, setIsDesktop] = useState(() => {
+        if (typeof window === "undefined") return false;
+        return window.matchMedia("(min-width: 768px)").matches;
+    });
+
+    useEffect(() => {
+        const mql = window.matchMedia("(min-width: 768px)");
+        const handleChange = (e) => setIsDesktop(e.matches);
+        mql.addEventListener("change", handleChange);
+        return () => mql.removeEventListener("change", handleChange);
+    }, []);
+
     return (
         <section 
             id="home" 
             role="banner"
             className="relative min-h-[92vh] flex items-center justify-center overflow-hidden px-6 pt-28 pb-16 md:px-12"
         >
-            {/* Preserved Signature Hexagon Lottie Background Animation */}
-            <div className="absolute top-[40%] md:top-1/2 left-1/2 md:left-3/4 -translate-x-1/2 -translate-y-1/2 w-full h-full md:w-[1000px] md:h-[1000px] z-0 opacity-40 md:opacity-60 pointer-events-none">
-                <Lottie
-                    animationData={hexagonAnimation}
-                    loop={true}
-                    autoplay={true}
-                    className="w-full h-full"
-                />
-            </div>
+            {/* Preserved Signature Hexagon Lottie Background Animation (Desktop only for buttery smooth mobile scroll) */}
+            {isDesktop && (
+                <div className="hidden md:block absolute top-[40%] md:top-1/2 left-1/2 md:left-3/4 -translate-x-1/2 -translate-y-1/2 w-full h-full md:w-[1000px] md:h-[1000px] z-0 opacity-40 md:opacity-60 pointer-events-none">
+                    <Lottie
+                        animationData={hexagonAnimation}
+                        loop={true}
+                        autoplay={true}
+                        className="w-full h-full"
+                    />
+                </div>
+            )}
 
             <div className="container max-w-6xl mx-auto relative z-10 flex flex-col md:flex-row items-center justify-between">
                 

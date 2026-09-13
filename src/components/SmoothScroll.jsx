@@ -5,8 +5,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Same breakpoint used by FloatingSkillsHelix, kept in sync intentionally.
-const MOBILE_BREAKPOINT = "(max-width: 640px)";
+// On mobile & touch devices (< 1024px or coarse pointer), Lenis is skipped
+// so touch screens preserve 100% native 60/120fps hardware-accelerated momentum.
+const MOBILE_OR_TOUCH = "(max-width: 1024px), (pointer: coarse)";
 
 /**
  * Wrap your app with this component.
@@ -14,13 +15,13 @@ const MOBILE_BREAKPOINT = "(max-width: 640px)";
  * It drives Lenis off GSAP's own ticker so Lenis's scroll values and
  * ScrollTrigger's pin/scrub calculations always agree.
  *
- * On mobile (< 640px), Lenis is skipped so touch devices use smooth native momentum.
+ * On mobile/touch, Lenis is skipped so touch devices use smooth native momentum.
  */
 export default function SmoothScroll({ children }) {
   useEffect(() => {
-    const isMobile = window.matchMedia(MOBILE_BREAKPOINT).matches;
+    const isMobileOrTouch = window.matchMedia(MOBILE_OR_TOUCH).matches;
 
-    if (isMobile) {
+    if (isMobileOrTouch) {
       window.__lenis = null;
       return;
     }
