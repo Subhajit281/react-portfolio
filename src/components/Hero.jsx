@@ -37,7 +37,7 @@ const Hero = () => {
                     className="flex-1 text-center md:text-left md:mr-10 order-2 md:order-1"
                 >
                     {/* Live Status Pill Badge */}
-                    <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 backdrop-blur-md mb-6 shadow-sm">
+                    {/* <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-slate-900/80 border border-cyan-500/30 backdrop-blur-md mb-6 shadow-sm">
                         <span className="relative flex h-2 w-2">
                             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -45,7 +45,7 @@ const Hero = () => {
                         <span className="text-xs font-mono text-slate-300 font-medium tracking-wide">
                             Available for Roles • B.Tech CSE @ NIT Silchar
                         </span>
-                    </div>
+                    </div> */}
 
                     <p className="text-lg sm:text-xl font-mono text-cyan-400 font-semibold mb-2 flex items-center justify-center md:justify-start gap-2">
                         <FaTerminal size={14} className="text-cyan-400" />
