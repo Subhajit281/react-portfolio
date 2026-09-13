@@ -39,7 +39,7 @@ export default function BlogDetails() {
   const { previous, next } = getAdjacentPosts(slug);
 
   return (
-    <div className={`${blogConfig.theme.pageBg} min-h-screen pt-18`}>
+    <div className={`${blogConfig.theme.pageBg} min-h-screen pt-24 pb-16`}>
       <SEO
         title={post.title}
         description={post.description}

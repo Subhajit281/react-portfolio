@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { FaBookOpen } from "react-icons/fa";
 import {
   SEO,
   BlogGrid,
@@ -16,6 +17,7 @@ import {
   getPostsByTag,
 } from "../data/blogData";
 import { blogConfig } from "../config/blogConfig";
+import PageTransition from "../components/PageTransition";
 
 export default function Blog() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -59,30 +61,36 @@ export default function Blog() {
   };
 
   return (
-    <div className={`${blogConfig.theme.pageBg} min-h-screen pt-18`}>
+    <PageTransition>
       <SEO
         title={blogConfig.blogTitle}
         description={blogConfig.blogDescription}
         path="/blogs"
       />
 
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10">
-        <Breadcrumbs items={[{ label: "Blog" }]} />
-
-        <header className="mb-10">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-gray-100">
-            {blogConfig.blogTitle}
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6">
+        {/* Header with White & Neon Cyan Gradient */}
+        <div className="text-center max-w-3xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 text-xs font-mono uppercase tracking-wider mb-4">
+            <FaBookOpen className="text-cyan-400" /> Technical Publications
+          </div>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
+            Articles & <span className="gradient-text-cyan">Technical Insights</span>
           </h1>
-          <p className="mt-2 text-gray-500 dark:text-gray-400 max-w-2xl">
-            {blogConfig.blogDescription}
+          <p className="text-slate-300 text-base sm:text-lg leading-relaxed">
+            In-depth guides, distributed system patterns, algorithmic strategies, and full-stack engineering notes from real-world software development.
           </p>
-        </header>
+        </div>
+
+        <div className="mb-8">
+          <Breadcrumbs items={[{ label: "Blog" }]} />
+        </div>
 
         {!query && !urlTag && activeCategory === "All" && (
           <FeaturedPosts posts={featured} />
         )}
 
-        <div className="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between mb-6">
+        <div className="flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between mb-8">
           <CategoryFilter
             categories={categories.map((c) => c.category)}
             active={activeCategory}
@@ -94,15 +102,16 @@ export default function Blog() {
         </div>
 
         {urlTag && (
-          <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-            Showing posts tagged <span className="font-medium">#{urlTag}</span>
-          </p>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-slate-900/60 border border-cyan-500/30 text-sm text-slate-300 mb-6">
+            <span>Showing posts tagged:</span>
+            <span className="font-mono text-cyan-400 font-semibold">#{urlTag}</span>
+          </div>
         )}
 
         <BlogGrid posts={paginated} />
 
         <Pagination currentPage={page} totalPages={totalPages} onPageChange={setPage} />
       </div>
-    </div>
+    </PageTransition>
   );
 }
