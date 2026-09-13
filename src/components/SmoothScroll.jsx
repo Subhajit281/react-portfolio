@@ -1,57 +1,55 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import Lenis from "lenis";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-export default function ScrollToHash() {
-  const { hash, pathname } = useLocation();
+gsap.registerPlugin(ScrollTrigger);
 
+// Same breakpoint used by FloatingSkillsHelix, kept in sync intentionally.
+const MOBILE_BREAKPOINT = "(max-width: 640px)";
+
+/**
+ * Wrap your app with this component.
+ *
+ * It drives Lenis off GSAP's own ticker so Lenis's scroll values and
+ * ScrollTrigger's pin/scrub calculations always agree.
+ *
+ * On mobile (< 640px), Lenis is skipped so touch devices use smooth native momentum.
+ */
+export default function SmoothScroll({ children }) {
   useEffect(() => {
-    let cancelled = false;
+    const isMobile = window.matchMedia(MOBILE_BREAKPOINT).matches;
 
-    const timer = setTimeout(() => {
-      if (cancelled) return;
+    if (isMobile) {
+      window.__lenis = null;
+      return;
+    }
 
-      const lenis = window.__lenis;
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 2,
+    });
 
-      // No hash → scroll to top
-      if (!hash) {
-        if (lenis) {
-          lenis.scrollTo(0, {
-            immediate: true,
-          });
-        } else {
-          window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: "auto",
-          });
-        }
+    window.__lenis = lenis;
 
-        return;
-      }
+    // Keep ScrollTrigger in sync with Lenis's scroll position
+    lenis.on("scroll", ScrollTrigger.update);
 
-      const id = decodeURIComponent(hash.slice(1));
-      const element = document.getElementById(id);
-
-      if (!element) return;
-
-      if (lenis) {
-        lenis.scrollTo(element, {
-          offset: -75,
-          duration: 1.1,
-        });
-      } else {
-        element.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    }, 200);
+    // Drive Lenis's rAF loop from GSAP's ticker
+    const update = (time) => {
+      lenis.raf(time * 1000);
+    };
+    gsap.ticker.add(update);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      cancelled = true;
-      clearTimeout(timer);
+      gsap.ticker.remove(update);
+      lenis.destroy();
+      window.__lenis = null;
     };
-  }, [pathname, hash]);
+  }, []);
 
-  return null;
+  return children;
 }
