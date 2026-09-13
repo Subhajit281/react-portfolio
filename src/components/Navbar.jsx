@@ -38,7 +38,7 @@ const Navbar = () => {
   }, [location.pathname, location.hash]);
 
   const navLinks = [
-    { to: "/home", label: "About" },
+    { to: "/", label: "About" },
     { to: "/projects", label: "Projects" },
     { to: "/skills", label: "Skills" },
     { to: "/experience", label: "Experience" },
