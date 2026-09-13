@@ -26,6 +26,9 @@ const SkillsPage = lazy(() => import("./pages/SkillsPage"));
 const ExperiencePage = lazy(() => import("./pages/ExperiencePage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
 const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy"));
+const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
+const NetworkErrorPage = lazy(() => import("./pages/NetworkErrorPage"));
+import NetworkStatusHandler from "./components/NetworkStatusHandler";
 
 import { blogRoutes } from "./routes/BlogRoutes";
 
@@ -101,6 +104,9 @@ const App = () => {
       {/* Glowing scroll progress bar */}
       <ScrollProgressBar />
 
+      {/* Real-time network connectivity detector */}
+      <NetworkStatusHandler />
+
       {/* Scroll-to-hash and route change coordination */}
       <ScrollToHash />
 
@@ -152,6 +158,22 @@ const App = () => {
             }
           />
           {blogRoutes}
+          <Route
+            path="/network-error"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <NetworkErrorPage />
+              </Suspense>
+            }
+          />
+          <Route
+            path="*"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <NotFoundPage />
+              </Suspense>
+            }
+          />
         </Routes>
       </AnimatePresence>
 

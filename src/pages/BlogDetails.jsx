@@ -19,6 +19,7 @@ import {
 } from "../data/blogData";
 import { formatDate } from "../utils/dateFormat";
 import { blogConfig } from "../config/blogConfig";
+import NotFoundPage from "./NotFoundPage";
 
 export default function BlogDetails() {
   const { slug } = useParams();
@@ -32,7 +33,11 @@ export default function BlogDetails() {
   }, [slug]);
 
   if (!post) {
-    return <Navigate to="/blogs" replace />;
+    return (
+      <NotFoundPage
+        message={`The article "${slug}" could not be found in our technical publication archives.`}
+      />
+    );
   }
 
   const related = getRelatedPosts(slug);
