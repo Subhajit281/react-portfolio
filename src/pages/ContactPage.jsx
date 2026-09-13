@@ -138,10 +138,10 @@ export default function ContactPage() {
             {/* Location & Status */}
             <div className="rounded-2xl bg-slate-900/30 border border-white/5 p-6 backdrop-blur-md text-sm text-slate-400 space-y-2">
               <div className="flex items-center gap-2 text-slate-200">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                {/* <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" /> */}
                 <span className="font-semibold text-emerald-300">Open to Roles & Collaborations</span>
               </div>
-              <p>📍 National Institute of Technology Silchar, Assam, India</p>
+              <p>National Institute of Technology Silchar, Assam, India</p>
             </div>
           </div>
 

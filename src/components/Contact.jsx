@@ -165,7 +165,7 @@ const Contact = () => {
           </motion.div>
         </div>
 
-        {formStatus.message && (
+        {formStatus.message && (  
           <div className={`mt-8 text-sm p-4 rounded-xl flex items-center justify-center gap-2.5 max-w-lg mx-auto ${
             formStatus.success ? 'bg-emerald-950/50 border border-emerald-500/30 text-emerald-300' : 'bg-red-950/50 border border-red-500/30 text-red-300'
           }`}>
