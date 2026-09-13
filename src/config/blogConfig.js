@@ -47,16 +47,16 @@ export const blogConfig = {
   // every Blog component reads colors from here, so this is the only
   // file you should need to touch to reskin the blog.
   theme: {
-    pageBg: "bg-white dark:bg-gray-950",
-    surface: "bg-gray-50 dark:bg-gray-900",
-    border: "border-gray-200 dark:border-gray-800",
-    text: "text-gray-900 dark:text-gray-100",
-    textMuted: "text-gray-500 dark:text-gray-400",
-    accent: "text-indigo-600 dark:text-indigo-400",
-    accentBg: "bg-indigo-600 dark:bg-indigo-500",
-    accentBgHover: "hover:bg-indigo-700 dark:hover:bg-indigo-600",
-    ring: "focus:ring-2 focus:ring-indigo-500",
-    tagBg: "bg-indigo-50 dark:bg-indigo-500/10",
-    tagText: "text-indigo-700 dark:text-indigo-300",
+    pageBg: "bg-transparent",
+    surface: "bg-slate-900/60 backdrop-blur-md",
+    border: "border-white/10",
+    text: "text-white",
+    textMuted: "text-slate-400",
+    accent: "text-cyan-400",
+    accentBg: "bg-cyan-500 text-slate-950 font-bold",
+    accentBgHover: "hover:bg-cyan-400",
+    ring: "focus:ring-2 focus:ring-cyan-400",
+    tagBg: "bg-cyan-950/40 border border-cyan-500/20",
+    tagText: "text-cyan-300",
   },
 };

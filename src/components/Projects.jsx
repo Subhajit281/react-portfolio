@@ -1,33 +1,33 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-// eslint-disable-next-line no-unused-vars
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { FaGithub, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import { FiExternalLink } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 const Projects = () => {
   const projects = [
-      {
-        title: 'API Monitoring Platform',
-        description:
-          'A full-stack API monitoring platform that continuously tracks API uptime, response time, and availability.',
-        imageUrl: 'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1783605791/Screenshot_2026-06-28_183432_1_bxtnwp.jpg',
-        tags: [
-          'Node.js',
-          'Express.js',
-          'PostgreSQL',
-          'Prisma',
-          'Node-Cron',
-          'Redis',
-          'JWT',
-          'Docker',
-          'Swagger',
-        ],
-        githubUrl: 'https://github.com/Subhajit281/API-Monitoring-Platform-Backend',
-        liveUrl: 'https://upflow-monitoring.vercel.app',
-      },
+    {
+      title: 'API Monitoring Platform',
+      description:
+        'A full-stack API monitoring platform that continuously tracks API uptime, response time, and availability.',
+      imageUrl: 'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1783605791/Screenshot_2026-06-28_183432_1_bxtnwp.jpg',
+      tags: [
+        'Node.js',
+        'Express.js',
+        'PostgreSQL',
+        'Prisma',
+        'Node-Cron',
+        'Redis',
+        'JWT',
+        'Docker',
+        'Swagger',
+      ],
+      githubUrl: 'https://github.com/Subhajit281/API-Monitoring-Platform-Backend',
+      liveUrl: 'https://upflow-monitoring.vercel.app',
+    },
     {
       title: 'CSS Website',
-      description: 'A web-based platform for students that allows them to search for any materials and knows about the upcoming events and happenings  in the branch.',
+      description: 'A web-based platform for students that allows them to search for any materials and knows about the upcoming events and happenings in the branch.',
       imageUrl: 'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1765553890/Screenshot_2025-12-12_211031_wzltor.png',
       tags: ['ReactJS', 'TailwindCSS', 'Javascript'],
       githubUrl: 'https://github.com/ComputerScienceSoceityNITS/css-official-website-2025-26.git',
@@ -57,10 +57,9 @@ const Projects = () => {
       githubUrl: 'https://github.com/Subhajit281/react-portfolio.git',
       liveUrl: 'https://subhajit-sarkar.vercel.app',
     },
-    // Add more projects here
   ];
 
-  const AUTOPLAY_DELAY = 2800; // ms
+  const AUTOPLAY_DELAY = 3200; // ms
   const SWIPE_THRESHOLD = 50; // px
 
   const [perView, setPerView] = useState(
@@ -142,14 +141,19 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="bg-transparent text-white py-20 md:py-32">
-      <div className="container max-w-7xl mx-auto px-7">
-        <h2 className="text-4xl font-bold mb-8 inline-block bg-gray-900/40 px-8 py-1 rounded-lg text-purple-100 [text-shadow:10px_7px_3px_rgba(0,0,0,0.9)]">
-          My Works
-        </h2>
-        <p className="text-lg text-white mb-16 leading-relaxed [text-shadow:6px_4px_2px_rgba(0,0,0,0.9)] max-w-3xl">
-          Following projects showcases my skills and experience through real-world examples of my work. Each project is briefly described with links to code repositories and live demos.
-        </p>
+    <section id="projects" className="bg-transparent text-white py-20 md:py-28">
+      <div className="container max-w-7xl mx-auto px-6">
+        <div className="text-center md:text-left mb-12">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 text-xs font-mono uppercase tracking-wider mb-4">
+            Production & Engineering
+          </div>
+          <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white">
+            Featured <span className="gradient-text-cyan">Works</span>
+          </h2>
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-3xl">
+            Real-world systems, full-stack applications, and real-time simulators I've designed and engineered.
+          </p>
+        </div>
 
         {/* Carousel Wrapper */}
         <div
@@ -163,12 +167,12 @@ const Projects = () => {
             onClick={goPrev}
             aria-label="Previous projects"
             className="absolute left-0 md:-left-5 top-1/2 -translate-y-1/2 z-20 
-                       bg-gray-900/60 hover:bg-cyan-900/70 border border-cyan-400/50
-                       text-cyan-300 hover:text-white rounded-full p-3 
-                       shadow-lg shadow-cyan-400/30 backdrop-blur-sm
-                       transition-all duration-300 hover:scale-110"
+                       bg-slate-950/80 hover:bg-cyan-500 hover:text-slate-950 border border-white/10 hover:border-cyan-400
+                       text-cyan-300 rounded-full p-3.5 
+                       shadow-xl shadow-black/50 backdrop-blur-md
+                       transition-all duration-200 hover:scale-110"
           >
-            <FaChevronLeft className="text-lg" />
+            <FaChevronLeft className="text-base" />
           </button>
 
           {/* Next Button */}
@@ -177,17 +181,17 @@ const Projects = () => {
             onClick={goNext}
             aria-label="Next projects"
             className="absolute right-0 md:-right-5 top-1/2 -translate-y-1/2 z-20 
-                       bg-gray-900/60 hover:bg-cyan-900/70 border border-cyan-400/50
-                       text-cyan-300 hover:text-white rounded-full p-3 
-                       shadow-lg shadow-cyan-400/30 backdrop-blur-sm
-                       transition-all duration-300 hover:scale-110"
+                       bg-slate-950/80 hover:bg-cyan-500 hover:text-slate-950 border border-white/10 hover:border-cyan-400
+                       text-cyan-300 rounded-full p-3.5 
+                       shadow-xl shadow-black/50 backdrop-blur-md
+                       transition-all duration-200 hover:scale-110"
           >
-            <FaChevronRight className="text-lg" />
+            <FaChevronRight className="text-base" />
           </button>
 
           {/* Track viewport */}
           <div
-            className="overflow-hidden mx-8 md:mx-12"
+            className="overflow-hidden mx-6 md:mx-10"
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
@@ -196,59 +200,73 @@ const Projects = () => {
               ref={trackRef}
               className="flex"
               animate={{ x: `-${index * 100}%` }}
-              transition={{ type: 'tween', ease: [0.20, 1, 0.20, 1], duration: 0.6 }}
+              transition={{ type: 'tween', ease: [0.16, 1, 0.3, 1], duration: 0.6 }}
               style={{ touchAction: 'pan-y' }}
             >
               {slides.map((slideGroup, slideIdx) => (
                 <div
                   key={slideIdx}
-                  className="flex-shrink-0 w-full grid grid-cols-1 md:grid-cols-3 gap-8 px-1"
+                  className="flex-shrink-0 w-full grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 px-1"
                 >
                   {slideGroup.map((project, projIdx) => (
                     <motion.div
                       key={project.title + projIdx}
-                      className="rounded-lg bg-gray-900/30 border-b border-cyan-400 backdrop-blur-sm transition-all duration-300 transform hover:scale-93 
-                                 shadow-lg shadow-cyan-400/50 hover:shadow-xl hover:shadow-cyan-400/60 animated-gradient-border overflow-hidden"
-                      initial={{ opacity: 0, y: 50 }}
+                      className="group rounded-2xl bg-slate-900/60 border border-white/10 hover:border-cyan-400/50 backdrop-blur-xl 
+                                 transition-all duration-300 shadow-2xl shadow-black/40 overflow-hidden flex flex-col justify-between hover:-translate-y-1.5"
+                      initial={{ opacity: 0, y: 30 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: projIdx * 0.1 }}
-                      whileHover={{ scale: 1.05, y: -10 }}
+                      transition={{ duration: 0.4, delay: projIdx * 0.08 }}
                     >
-                      <div className="relative">
+                      <div className="relative h-48 overflow-hidden bg-slate-950">
                         <img
                           src={project.imageUrl}
                           alt={project.title}
-                          className="w-full h-50 object-cover"
+                          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 ease-out"
                           draggable="false"
                         />
-                        <div className="absolute top-4 right-4 flex gap-3">
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-white text-2xl hover:text-cyan-400 transition-colors"
-                          >
-                            <FaGithub />
-                          </a>
-                          <a
-                            href={project.liveUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-white text-2xl hover:text-cyan-400 transition-colors"
-                          >
-                            <FiExternalLink />
-                          </a>
+                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+
+                        <div className="absolute top-3 right-3 flex gap-2">
+                          {project.githubUrl && (
+                            <a
+                              href={project.githubUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`GitHub for ${project.title}`}
+                              className="w-9 h-9 rounded-full bg-slate-900/80 hover:bg-cyan-500 hover:text-slate-950 text-white flex items-center justify-center border border-white/10 transition-colors backdrop-blur-md"
+                            >
+                              <FaGithub className="text-base" />
+                            </a>
+                          )}
+                          {project.liveUrl && project.liveUrl !== '#' && (
+                            <a
+                              href={project.liveUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Live Demo for ${project.title}`}
+                              className="w-9 h-9 rounded-full bg-slate-900/80 hover:bg-cyan-500 hover:text-slate-950 text-white flex items-center justify-center border border-white/10 transition-colors backdrop-blur-md"
+                            >
+                              <FiExternalLink className="text-sm" />
+                            </a>
+                          )}
                         </div>
                       </div>
-                      <div className="p-6">
-                        <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
-                        <p className="text-gray-300 mb-3">{project.description}</p>
-                        <div className="flex flex-wrap gap-2">
-                          {project.tags.map((tag, tagIndex) => (
+
+                      <div className="p-6 flex-1 flex flex-col justify-between">
+                        <div>
+                          <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-300 transition-colors">
+                            {project.title}
+                          </h3>
+                          <p className="text-slate-300 text-sm mb-4 leading-relaxed line-clamp-3">
+                            {project.description}
+                          </p>
+                        </div>
+                        <div className="flex flex-wrap gap-1.5 pt-3 border-t border-white/5">
+                          {project.tags.slice(0, 5).map((tag, tagIndex) => (
                             <span
                               key={tagIndex}
-                              className="bg-cyan-900/50 text-cyan-400 text-sm font-medium px-3 py-1 rounded-full"
+                              className="bg-slate-800/60 text-slate-300 text-[11px] font-mono px-2.5 py-1 rounded-md border border-white/5"
                             >
                               {tag}
                             </span>
@@ -272,17 +290,23 @@ const Projects = () => {
                 aria-label={`Go to slide ${i + 1}`}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   i === index
-                    ? 'w-6 bg-cyan-400 shadow-md shadow-cyan-400/60'
-                    : 'w-2 bg-gray-500/50 hover:bg-cyan-400/50'
+                    ? 'w-7 bg-cyan-400 shadow-md shadow-cyan-400/60'
+                    : 'w-2 bg-slate-700 hover:bg-cyan-400/50'
                 }`}
               />
             ))}
           </div>
         </div>
-      </div>
 
-      <div className="flex justify-center mt-14 text-gray-400 text-sm">
-        *If you like my works try adding a star to the github repositories, it motivates me a lot
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-12 text-slate-400 text-xs sm:text-sm font-mono border-t border-white/5 pt-6">
+          <span>*If you like my works, consider starring the GitHub repositories.</span>
+          <Link
+            to="/projects"
+            className="text-cyan-400 hover:text-cyan-300 font-semibold inline-flex items-center gap-1 hover:underline"
+          >
+            View All Projects & Tech Stacks →
+          </Link>
+        </div>
       </div>
     </section>
   );

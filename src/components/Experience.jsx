@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Experience = () => {
   const experiences = [
@@ -41,38 +42,28 @@ const Experience = () => {
         'Contributing as a tech content writer by creating clear, engaging, and beginner-friendly technical articles and documentation. Focused on simplifying complex computer science concepts and promoting tech awareness through structured and impactful content.',
       skills: ['Technical Writing', 'Content Creation', 'Computer Science Fundamentals'],
       imageUrl:
-        'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1771739279/images_v3ov9v.png  ',
+        'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1771739279/images_v3ov9v.png',
     },
   ];
 
   return (
-    <section id="experience" className="bg-transparent text-white py-20 md:py-32">
+    <section id="experience" className="bg-transparent text-white py-20 md:py-28">
       <div className="container max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold mb-10 inline-block bg-gray-900/40 px-8 py-1 rounded-lg text-purple-100 [text-shadow:10px_7px_3px_rgba(0,0,0,0.9)]">
-          Experience
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 text-xs font-mono uppercase tracking-wider mb-4">
+          Career Milestones
+        </div>
+        <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white">
+          Work <span className="gradient-text-cyan">Experience</span>
         </h2>
-
-        <p className="text-lg text-white mb-16 leading-relaxed [text-shadow:6px_4px_2px_rgba(0,0,0,0.9)]">
-          My work experience on different projects.
+        <p className="text-base sm:text-lg text-slate-300 mb-16 max-w-2xl mx-auto">
+          Engineering roles and student society contributions focused on building scalable, user-centric software.
         </p>
 
         <div className="relative">
-
-          {/* 🔥 Enhanced Vertical Timeline Line (Desktop only) */}
+          {/* Vertical Timeline Spine Line (Desktop only) */}
           <div className="absolute left-1/2 top-0 h-full -translate-x-1/2 hidden md:block">
-            {/* Glow layer */}
-            <div
-              className="absolute inset-0 w-[3px] 
-                         bg-gradient-to-b from-cyan-200 via-cyan-400 to-cyan-200
-                         blur-lg opacity-80"
-            ></div>
-
-            {/* Main animated line */}
-            <div
-              className="relative w-[3px] h-full 
-                         bg-gradient-to-b from-transparent via-cyan-400 to-transparent
-                         animate-pulse"
-            ></div>
+            <div className="absolute inset-0 w-[2px] bg-gradient-to-b from-cyan-400 via-indigo-500 to-cyan-400 blur-sm opacity-70" />
+            <div className="relative w-[2px] h-full bg-gradient-to-b from-transparent via-cyan-400 to-transparent" />
           </div>
 
           {experiences.map((exp, index) => (
@@ -80,15 +71,15 @@ const Experience = () => {
               key={index}
               className="relative mb-12 flex flex-col items-center md:items-stretch"
             >
-              {/* Timeline Node */}
+              {/* Timeline Node Icon */}
               <motion.div
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4 }}
                 className="relative md:absolute md:left-1/2 md:top-6 md:-translate-x-1/2 
-                           w-16 h-16 bg-gray-100 rounded-full border-4 border-cyan-800 
-                           flex items-center justify-center z-10 overflow-hidden mb-4 md:mb-0"
+                           w-14 h-14 bg-slate-950 rounded-2xl border-2 border-cyan-400 
+                           flex items-center justify-center z-10 overflow-hidden mb-4 md:mb-0 shadow-lg shadow-cyan-500/30"
               >
                 <img
                   src={exp.imageUrl}
@@ -104,38 +95,52 @@ const Experience = () => {
                 }`}
               >
                 <motion.div
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3 }}
-                  className="w-full max-w-lg md:w-[40%] p-10 
-                             border-b border-cyan-400 rounded-xl 
-                             bg-gray-900/30 backdrop-blur-sm 
-                             transition-all duration-300 transform hover:scale-105
-                             shadow-xl shadow-cyan-400/50 hover:shadow-2xl hover:shadow-cyan-400/60 
-                             animated-gradient-border"
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="w-full max-w-lg md:w-[42%] p-6 sm:p-8 
+                             rounded-2xl border border-white/10 hover:border-cyan-400/40 
+                             bg-slate-900/60 backdrop-blur-xl 
+                             transition-all duration-300 shadow-2xl shadow-black/40 hover:-translate-y-1 text-left"
                 >
-                  <p className="text-sm text-cyan-400 mb-1">{exp.date}</p>
-                  <h3 className="text-xl font-bold mb-2">{exp.title}</h3>
-                  <p className="text-md font-semibold text-gray-300 mb-4">
+                  <span className="text-xs font-mono text-cyan-400 font-semibold mb-1 block">
+                    {exp.date}
+                  </span>
+                  <h3 className="text-xl font-bold text-white mb-1">{exp.title}</h3>
+                  <p className="text-sm font-semibold text-slate-400 mb-4">
                     {exp.company}
                   </p>
-                  <p className="text-gray-300 mb-4 text-left">
+                  <p className="text-sm text-slate-300 mb-5 leading-relaxed">
                     {exp.description}
                   </p>
 
-                  <div className="text-left">
-                    <h4 className="font-semibold mb-2">Skills:</h4>
-                    <ul className="list-disc list-inside text-gray-300">
+                  <div>
+                    <h4 className="text-xs font-mono text-slate-400 uppercase tracking-wider mb-2">Core Tech:</h4>
+                    <div className="flex flex-wrap gap-1.5">
                       {exp.skills.map((skill, i) => (
-                        <li key={i}>{skill}</li>
+                        <span
+                          key={i}
+                          className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-slate-800/60 text-slate-300 border border-white/5"
+                        >
+                          {skill}
+                        </span>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </motion.div>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-8">
+          <Link
+            to="/experience"
+            className="text-cyan-400 hover:text-cyan-300 text-sm font-mono inline-flex items-center gap-1.5 hover:underline"
+          >
+            View Complete Career Journey & Education →
+          </Link>
         </div>
       </div>
     </section>

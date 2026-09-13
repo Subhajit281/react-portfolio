@@ -15,12 +15,12 @@ import React from "react";
  * Suggested route: /privacy-policy
  */
 
+import PageTransition from "./PageTransition";
+
 const PrivacyPolicy = () => {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-950 via-[#0a1128] to-blue-950 text-slate-200 px-6 py-16 md:px-20 lg:px-40 relative overflow-hidden pt-27">
-      {/* soft glow accents to match glassy site aesthetic */}
-      <div className="pointer-events-none absolute -top-40 -left-40 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl" />
-      <div className="pointer-events-none absolute top-1/2 -right-40 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl" />
+    <PageTransition>
+      <main className="text-slate-200 px-6 md:px-20 lg:px-40 relative z-10">
 
       <div className="max-w-3xl mx-auto relative z-10">
         <h1 className="text-3xl md:text-4xl font-bold mb-2 text-white">
@@ -283,6 +283,7 @@ const PrivacyPolicy = () => {
         </Section>
       </div>
     </main>
+    </PageTransition>
   );
 };
 

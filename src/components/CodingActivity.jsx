@@ -289,7 +289,7 @@ function LeetCodeSection() {
   const rank       = stats?.ranking      ?? null;
 
   return (
-    <div className="bg-gray-900/80 transition-all border-b border-[#f89f1b]/40 duration-300 shadow-xl shadow-[#f89f1b]/20 p-8 rounded-lg text-left flex flex-col gap-6">
+    <div className="bg-slate-900/60 border border-amber-500/20 hover:border-amber-500/40 backdrop-blur-xl transition-all duration-300 shadow-2xl shadow-black/40 p-6 sm:p-8 rounded-2xl text-left flex flex-col gap-6">
 
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -416,7 +416,7 @@ function GitHubSection() {
   }, []);
 
   return (
-    <div className="bg-gray-900/80 transition-all border-b border-[#38bdf8]/40 duration-300 shadow-xl shadow-[#38bdf8]/20 p-8 rounded-lg text-left flex flex-col gap-6">
+    <div className="bg-slate-900/60 border border-emerald-500/20 hover:border-emerald-500/40 backdrop-blur-xl transition-all duration-300 shadow-2xl shadow-black/40 p-6 sm:p-8 rounded-2xl text-left flex flex-col gap-6">
 
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -480,13 +480,16 @@ function GitHubSection() {
 // ─── ROOT ─────────────────────────────────────────────────────────────────────
 export default function CodingActivity() {
   return (
-    <section id="coding" className="bg-transparent text-white py-20 md:py-32">
+    <section id="coding" className="bg-transparent text-white py-20 md:py-28">
       <div className="container max-w-6xl mx-auto px-6 text-center">
-        <h2 className="text-4xl font-bold mb-4 inline-block bg-gray-900/40 px-8 py-1 rounded-lg text-purple-100 [text-shadow:10px_7px_3px_rgba(0,0,0,0.9)]">
-          Where I Grind
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 text-xs font-mono uppercase tracking-wider mb-4">
+          Telemetry & Activity
+        </div>
+        <h2 className="text-4xl sm:text-5xl font-extrabold tracking-tight mb-4 text-white">
+          Where I <span className="gradient-text-cyan">Grind</span>
         </h2>
-        <p className="text-lg text-gray-300 mb-12">
-          Live stats pulled directly from platforms. Updates daily.
+        <p className="text-base sm:text-lg text-slate-300 mb-12 max-w-2xl mx-auto">
+          Live algorithm submissions and open-source contributions pulled directly from platforms.
         </p>
         <div className="flex flex-col gap-8">
           <LeetCodeSection />

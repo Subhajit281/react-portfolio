@@ -112,11 +112,10 @@ export default function FloatingSkillsHelix() {
   const { scrollYProgress } = useScroll();
   const isMobile = useIsMobile();
 
-  // Mobile: just the plain black backdrop, no cubes, no glow blur.
-  // This avoids running useTransform's trig math for every cube on
-  // every scroll frame, which is what was causing the scroll jank.
+  // Mobile: return null so DynamicBackground provides smooth atmospheric visuals
+  // with zero JS scroll computation overhead on touch devices.
   if (isMobile) {
-    return <aside className="skill-helix skill-helix--mobile" aria-hidden="true" />;
+    return null;
   }
 
   return (
