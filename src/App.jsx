@@ -25,6 +25,7 @@ const ProjectsPage = lazy(() => import("./pages/ProjectsPage"));
 const SkillsPage = lazy(() => import("./pages/SkillsPage"));
 const ExperiencePage = lazy(() => import("./pages/ExperiencePage"));
 const ContactPage = lazy(() => import("./pages/ContactPage"));
+const EducationPage = lazy(() => import("./pages/ExperiencePage"));
 const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const NetworkErrorPage = lazy(() => import("./pages/NetworkErrorPage"));
@@ -115,8 +116,9 @@ const App = () => {
 
       {/* Animated Routes */}
       <AnimatePresence mode="wait">
+        
         <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route
             path="/projects"
             element={
@@ -130,6 +132,22 @@ const App = () => {
             element={
               <Suspense fallback={<RouteFallback />}>
                 <SkillsPage />
+              </Suspense>
+            }
+          />
+          {/* <Route
+            path="/home"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <HomePage />
+              </Suspense>
+            }
+          /> */}
+          <Route
+            path="/education"
+            element={
+              <Suspense fallback={<RouteFallback />}>
+                <EducationPage />
               </Suspense>
             }
           />
