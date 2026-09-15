@@ -30,6 +30,19 @@ const allProjects = [
     featured: true,
   },
   {
+    title: "AgenticAI Document Analyzer",
+    category: "AI / Backend",
+    duration: "2026",
+    description:
+      "An AI-powered document analysis platform that extracts, processes, and understands information from documents using OCR, Docling, and Large Language Models.",
+    imageUrl:
+      "https://res.cloudinary.com/dyxbvlzcl/image/upload/v1789456016/Screenshot_2026-08-25_123952_i77ggz.png",
+    tags: ["Python", "Docling", "OCR", "LLM", "LangGraph"],
+    githubUrl: "https://github.com/Subhajit281/AI-Doc-Analyzer.git",
+    liveUrl: "https://github.com/Subhajit281/AI-Doc-Analyzer.git",
+    featured: true,
+    },
+  {
     title: "CSS Website",
     category: "Frontend",
     duration: "2025",
