@@ -26,6 +26,14 @@ const Projects = () => {
       liveUrl: 'https://upflow-monitoring.vercel.app',
     },
     {
+      title: 'AgenticAI Document Analyzer',
+      description: 'An AI-powered document analysis platform that extracts, processes, and understands information from documents using OCR, Docling, and Large Language Models.',
+      imageUrl: 'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1789456016/Screenshot_2026-08-25_123952_i77ggz.png',
+      tags: ['Python', 'Docling', 'OCR', 'LLM', 'LangGraph'],
+      githubUrl: 'https://github.com/Subhajit281/AI-Doc-Analyzer.git',
+      liveUrl: 'https://github.com/Subhajit281/AI-Doc-Analyzer.git',
+    },
+    {
       title: 'CSS Website',
       description: 'A web-based platform for students that allows them to search for any materials and knows about the upcoming events and happenings in the branch.',
       imageUrl: 'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1765553890/Screenshot_2025-12-12_211031_wzltor.png',
