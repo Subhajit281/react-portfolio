@@ -111,7 +111,7 @@ const Hero = () => {
                     {/* CTA buttons */}
                     <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 mt-8">
                         <a
-                            href="/Resume(09092006).pdf"
+                            href="./Resume(09092026).pdf"
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Open Subhajit Sarkar Web Developer Resume"
