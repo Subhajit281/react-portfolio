@@ -35,11 +35,10 @@ const allProjects = [
     duration: "2026",
     description:
       "An AI-powered document analysis platform that extracts, processes, and understands information from documents using OCR, Docling, and Large Language Models.",
-    imageUrl:
-      "https://res.cloudinary.com/dyxbvlzcl/image/upload/v1789456016/Screenshot_2026-08-25_123952_i77ggz.png",
+    imageUrl: 'https://res.cloudinary.com/dyxbvlzcl/image/upload/v1789848419/docai_bnjumw.png',
     tags: ["Python", "Docling", "OCR", "LLM", "LangGraph"],
-    githubUrl: "https://github.com/Subhajit281/AI-Doc-Analyzer.git",
-    liveUrl: "https://github.com/Subhajit281/AI-Doc-Analyzer.git",
+    githubUrl: 'https://github.com/Subhajit281/AI-Doc-Analyzer.git',
+    liveUrl: 'https://ai-rag-doc-analyzer.vercel.app',
     featured: true,
     },
   {
