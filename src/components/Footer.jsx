@@ -135,7 +135,7 @@ const Footer = () => {
                   )}
                 </li>
               ))}
-              <li>
+              {/* <li>
                 <button
                   type="button"
                   onClick={() => window.dispatchEvent(new CustomEvent("open-privacy-settings"))}
@@ -143,7 +143,7 @@ const Footer = () => {
                 >
                   Privacy Settings
                 </button>
-              </li>
+              </li> */}
             </ul>
           </div>
 
