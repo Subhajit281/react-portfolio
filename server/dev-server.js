@@ -1,15 +1,12 @@
-// api/dev-server.js  —  LOCAL DEV ONLY
-// Mimics Vercel's serverless function routing for local development.
-// Run alongside `npm run dev`: node api/dev-server.js
+// server/dev-server.js  —  LOCAL DEV ONLY
+// Mimics Vercel's serverless function routing and URL rewrites for local development.
+// Run alongside `npm run dev`: npm run api (or node server/dev-server.js)
 
 import http from "http";
 import dotenv from "dotenv";
-import lcHandler from "./leetcode.js";
-import ghHandler from "./github.js";
-import analyticsStartHandler from "./analytics/session/start.js";
-import analyticsHeartbeatHandler from "./analytics/session/heartbeat.js";
-import analyticsEndHandler from "./analytics/session/end.js";
-import analyticsManageHandler from "./analytics/manage.js";
+import lcHandler from "../api/leetcode.js";
+import ghHandler from "../api/github.js";
+import analyticsHandler from "../api/analytics.js";
 
 // Load local environment variables
 dotenv.config();
@@ -31,15 +28,6 @@ function shimRes(res) {
   return res;
 }
 
-const routes = {
-  "/api/leetcode": lcHandler,
-  "/api/github": ghHandler,
-  "/api/analytics/session/start": analyticsStartHandler,
-  "/api/analytics/session/heartbeat": analyticsHeartbeatHandler,
-  "/api/analytics/session/end": analyticsEndHandler,
-  "/api/analytics/manage": analyticsManageHandler,
-};
-
 http
   .createServer((req, res) => {
     const url = new URL(req.url, `http://localhost:${PORT}`);
@@ -51,7 +39,22 @@ http
       return;
     }
 
-    const handler = routes[url.pathname];
+    // Determine target handler
+    let handler = null;
+
+    if (url.pathname === "/api/leetcode") {
+      handler = lcHandler;
+    } else if (url.pathname === "/api/github") {
+      handler = ghHandler;
+    } else if (url.pathname.startsWith("/api/analytics")) {
+      // Map rewrites /api/analytics/(.*) -> endpoint query param
+      const subpath = url.pathname.replace(/^\/api\/analytics\/?/, "");
+      if (subpath) {
+        req.query.endpoint = subpath;
+      }
+      handler = analyticsHandler;
+    }
+
     if (!handler) {
       res.writeHead(404).end("Not found");
       return;
@@ -90,10 +93,8 @@ http
   })
   .listen(PORT, () => {
     console.log(`✓ Dev server running at http://localhost:${PORT}`);
-    console.log(`  /api/leetcode                     →  leetcode.js`);
-    console.log(`  /api/github                       →  github.js`);
-    console.log(`  /api/analytics/session/start      →  analytics/session/start.js`);
-    console.log(`  /api/analytics/session/heartbeat  →  analytics/session/heartbeat.js`);
-    console.log(`  /api/analytics/session/end        →  analytics/session/end.js`);
-    console.log(`  /api/analytics/manage             →  analytics/manage.js`);
+    console.log(`  /api/leetcode                     →  api/leetcode.js`);
+    console.log(`  /api/github                       →  api/github.js`);
+    console.log(`  /api/analytics/* (all actions)    →  api/analytics.js (single consolidated function)`);
   });
+

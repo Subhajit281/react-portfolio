@@ -3,6 +3,8 @@
   "outputDirectory": "dist",
   "framework": "vite",
   "rewrites": [
+    { "source": "/api/analytics/(.*)", "destination": "/api/analytics?endpoint=$1" },
+    { "source": "/api/analytics", "destination": "/api/analytics" },
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]

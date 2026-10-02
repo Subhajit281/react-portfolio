@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "test": "node api/test-analytics.js",
+    "test": "node server/test-analytics.js",
+    "api": "node server/dev-server.js",
     "preview": "vite preview"
   },
   "dependencies": {
