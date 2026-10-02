@@ -135,6 +135,15 @@ const Footer = () => {
                   )}
                 </li>
               ))}
+              <li>
+                <button
+                  type="button"
+                  onClick={() => window.dispatchEvent(new CustomEvent("open-privacy-settings"))}
+                  className="text-slate-400 hover:text-cyan-300 transition-colors cursor-pointer"
+                >
+                  Privacy Settings
+                </button>
+              </li>
             </ul>
           </div>
 

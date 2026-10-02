@@ -30,6 +30,8 @@ const PrivacyPolicy = lazy(() => import("./components/PrivacyPolicy"));
 const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 const NetworkErrorPage = lazy(() => import("./pages/NetworkErrorPage"));
 import NetworkStatusHandler from "./components/NetworkStatusHandler";
+import PrivacyNotice from "./components/PrivacyNotice";
+import analytics from "./services/analytics";
 
 import { blogRoutes } from "./routes/BlogRoutes";
 
@@ -91,6 +93,11 @@ const App = () => {
       return () => clearTimeout(timer);
     }
   }, [loading]);
+
+  // Initialize privacy-conscious visitor analytics
+  useEffect(() => {
+    analytics.init();
+  }, []);
 
   return (
     <SmoothScroll>
@@ -197,6 +204,9 @@ const App = () => {
 
       {/* AI Assistant Chatbot */}
       <Chatbot />
+
+      {/* Visitor Privacy & Analytics Notice */}
+      <PrivacyNotice />
 
       {/* Footer */}
       <Footer />
